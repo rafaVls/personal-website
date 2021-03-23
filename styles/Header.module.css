@@ -1,0 +1,39 @@
+.container {
+    min-height: 8em;
+    padding: 0 3em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container h1 {
+    font-family: var(--font-accent);
+    font-size: clamp(1.5rem, 3vw, 5rem);
+}
+
+.navBar {
+    min-width: 60%;
+}
+
+.navList {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navList li a {
+    font-family: var(--font-accent);
+    font-size: clamp(1rem, 2vw, 3rem);
+}
+
+@media only screen and (max-width: 740px) {
+    .container {
+        padding: 0 1.5em;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .container {
+        padding: 0 1em;
+    }
+}
