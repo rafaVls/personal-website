@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import styles from "../styles/Header.module.css";
 
 interface Props {
 	children: ReactNode;
@@ -7,10 +8,10 @@ interface Props {
 export default function Header({ children }: Props): JSX.Element {
 	return (
 		<>
-			<header>
+			<header className={styles.container}>
 				<h1>&lt;Rafael /&gt;</h1>
-				<nav>
-					<ul>
+				<nav className={styles.navBar}>
+					<ul className={styles.navList}>
 						<li>
 							<a href="#">Home</a>
 						</li>
