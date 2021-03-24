@@ -1,0 +1,42 @@
+.main {
+    padding: 0 3em;
+    /* 12 em is the header's height */
+    height: calc(100vh - 12em);
+
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: 85% 15%;
+    align-items: center;
+    justify-items: center;
+}
+
+.main p {
+    font-family: var(--font-primary);
+    line-height: 1.5;
+}
+
+.normalText {
+    font-size: clamp(1.25rem, 1.5vw, 3rem);
+}
+
+.bigText {
+    font-size: clamp(1.75rem, 2.5vw, 4rem);
+}
+
+.main img {
+    max-width: 45vw;
+}
+
+.main button {
+    grid-column: 1/3;
+    width: 3%;
+
+    font-family: var(--font-accent);
+    font-size: 2rem;
+    text-align: center;
+
+    transform: rotateZ(-270deg);
+    cursor: pointer;
+
+    border: none;
+}

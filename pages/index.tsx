@@ -1,12 +1,13 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
+import Main from "../components/Main";
 
 export default function Home(): DetailedHTMLProps<
 	HTMLAttributes<HTMLDivElement>,
 	HTMLDivElement
 > {
 	return (
-		<div>
-			<h1>Welcome to Next & Ghost</h1>
-		</div>
+		<>
+			<Main />
+		</>
 	);
 }
