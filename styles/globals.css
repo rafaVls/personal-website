@@ -31,8 +31,6 @@ a {
 
 header {
     margin: 4em 4em 0 4em;
-
-    border: 2px solid green;
 }
 
 @media only screen and (max-width: 768px) {
