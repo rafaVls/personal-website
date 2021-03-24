@@ -1,0 +1,14 @@
+.main {
+    padding: 0 3em;
+    min-height: 25em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 2px solid green;
+}
+
+.main img {
+    max-width: 50vw;
+}
