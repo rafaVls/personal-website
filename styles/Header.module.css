@@ -9,7 +9,7 @@
 
 .container h1 {
     font-family: var(--font-accent);
-    font-size: clamp(1.75rem, 3vw, 5rem);
+    font-size: clamp(1.75rem, 2vw, 5rem);
 }
 
 .navBar {
@@ -23,7 +23,7 @@
 
 .navList li a {
     font-family: var(--font-accent);
-    font-size: clamp(1.25rem, 2vw, 3rem);
+    font-size: clamp(1.25rem, 1.5vw, 3rem);
 }
 
 @media only screen and (max-width: 768px) {
