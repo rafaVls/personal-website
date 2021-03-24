@@ -16,6 +16,7 @@ html {
 
 body {
     margin: 4em 4em 0 4em;
+    overflow-y: scroll;
 }
 
 * {
