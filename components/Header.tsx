@@ -9,7 +9,9 @@ export default function Header({ children }: Props): JSX.Element {
 	return (
 		<>
 			<header className={styles.container}>
-				<h1>&lt;Rafael /&gt;</h1>
+				<h1>
+					<a href="#">&lt;Rafael /&gt;</a>
+				</h1>
 				<nav className={styles.navBar}>
 					<ul className={styles.navList}>
 						<li>
