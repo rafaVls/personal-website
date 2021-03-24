@@ -26,14 +26,26 @@
     font-size: clamp(1rem, 2vw, 3rem);
 }
 
-@media only screen and (max-width: 740px) {
-    .container {
-        padding: 0 1.5em;
-    }
-}
-
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 768px) {
     .container {
         padding: 0 1em;
     }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .navBar {
+        width: 100%;
+    }
+
+    .navList {
+        justify-content: space-between;
+    }
+
 }
