@@ -32,7 +32,7 @@
     width: 3%;
 
     font-family: var(--font-accent);
-    font-size: 2rem;
+    font-size: clamp(2rem, 2.5vw, 5rem);
     text-align: center;
 
     transform: rotateZ(-270deg);
