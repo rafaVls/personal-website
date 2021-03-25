@@ -1,7 +1,7 @@
 .main {
     padding: 0 3em;
-    /* 12 em is the header's height */
-    height: calc(100vh - 12em);
+    /* 12 rem is the header's height */
+    min-height: calc(100vh - 12rem);
 
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -24,7 +24,7 @@
 }
 
 .main img {
-    max-width: 45vw;
+    max-width: clamp(20rem, 35vw, 45vw);
 }
 
 .main button {
@@ -32,11 +32,41 @@
     width: 3%;
 
     font-family: var(--font-accent);
-    font-size: 2rem;
+    font-size: clamp(2rem, 2.5vw, 5rem);
     text-align: center;
+    align-self: flex-end;
 
     transform: rotateZ(-270deg);
     cursor: pointer;
 
     border: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .main {
+        padding: 0 1em;
+        min-height: calc(100vh - 11rem);
+
+        grid-template-columns: 100% 0;
+        grid-template-rows: repeat(2, auto) auto;
+    }
+
+    .main section {
+        align-self: flex-end;
+        margin-bottom: 1em;
+    }
+
+    .main img {
+        grid-row: 2/3;
+    }
+
+    .main button {
+        grid-row: 3/4;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .main {
+        min-height: calc(100vh - 9rem);
+    }
 }
