@@ -39,17 +39,17 @@ a {
         font-size: 14px;
     }
 
-    header {
+    body {
         margin: 3em 3em 0 3em;
     }
 }
 
 @media only screen and (max-width: 600px) {
     html {
-        font-size: 10px;
+        font-size: 12px;
     }
 
-    header {
+    body {
         margin: 1em 1em 0 1em;
     }
 }
