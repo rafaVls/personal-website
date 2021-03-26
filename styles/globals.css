@@ -12,10 +12,11 @@
 
 html {
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 4em 4em 0 4em;
+    margin: 1em 4em 0 4em;
     overflow-y: scroll;
 }
 
@@ -40,7 +41,7 @@ a {
     }
 
     body {
-        margin: 3em 3em 0 3em;
+        margin: 1em 3em 0 3em;
     }
 }
 

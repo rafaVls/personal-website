@@ -2,12 +2,13 @@ import styles from "../styles/About.module.css";
 
 export default function About(): JSX.Element {
 	return (
-		<section className={styles.container}>
+		<section className={styles.container} id="about">
 			<img
-				src="images/profile.jpg"
+				src="images/profile.png"
 				alt="Me looking at the camera, with the forest in the background."
+				loading="lazy"
 			/>
-			<div>
+			<div className={styles.textContainer}>
 				<section>
 					<h2>About me</h2>
 					<p>
@@ -17,12 +18,18 @@ export default function About(): JSX.Element {
 						JavaScript and several of it&apos;s frameworks.
 					</p>
 				</section>
-				<section>
-					<h3>Skills</h3>
-					<h3>Education</h3>
+				<section className={styles.variableText}>
+					<div className={styles.headers}>
+						<h3>
+							<a href="">Skills</a>
+						</h3>
+						<h3>
+							<a href="">Education</a>
+						</h3>
+					</div>
 					<h4>Web Development</h4>
 					<p>
-						I can create websites and webapps with CEO, responsiveness, and
+						I can create websites and webapps with SEO, responsiveness, and
 						accessibility in mind.
 					</p>
 					<h4>UI/UX Design</h4>

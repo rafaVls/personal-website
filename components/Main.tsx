@@ -11,7 +11,7 @@ export default function Main(): JSX.Element {
 				<p className={styles.normalText}>I am a Web Developer</p>
 			</section>
 			<img src="images/laptop.svg" alt="" />
-			<button>&gt;</button>
+			<a href="#about">&gt;</a>
 		</main>
 	);
 }
