@@ -20,8 +20,12 @@ export default function About(): JSX.Element {
 				</section>
 				<section className={styles.variableText}>
 					<div className={styles.headers}>
-						<h3>Skills</h3>
-						<h3>Education</h3>
+						<h3>
+							<button onClick={e => e.preventDefault}>Skills</button>
+						</h3>
+						<h3>
+							<button onClick={e => e.preventDefault}>Education</button>
+						</h3>
 					</div>
 					<h4>Web Development</h4>
 					<p>

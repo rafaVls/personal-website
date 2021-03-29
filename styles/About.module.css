@@ -36,7 +36,15 @@
 
 .textContainer h3 {
     font-size: clamp(1.2rem, 1.5vw, 3rem);
+}
+
+.textContainer h3 button{
     cursor: pointer;
+    border: none;
+    outline-offset: 5px;
+
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .textContainer h4 {
