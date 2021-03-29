@@ -1,6 +1,13 @@
+import React from "react";
 import styles from "../styles/About.module.css";
 
 export default function About(): JSX.Element {
+	function clickHandler(
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	): void {
+		e.preventDefault();
+	}
+
 	return (
 		<section className={styles.container} id="about">
 			<img
@@ -21,10 +28,14 @@ export default function About(): JSX.Element {
 				<section className={styles.variableText}>
 					<div className={styles.headers}>
 						<h3>
-							<button onClick={e => e.preventDefault}>Skills</button>
+							<button onClick={e => clickHandler(e)} name="skills">
+								Skills
+							</button>
 						</h3>
 						<h3>
-							<button onClick={e => e.preventDefault}>Education</button>
+							<button onClick={e => clickHandler(e)} name="education">
+								Education
+							</button>
 						</h3>
 					</div>
 					<h4>Web Development</h4>
