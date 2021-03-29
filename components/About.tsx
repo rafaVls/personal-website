@@ -20,17 +20,13 @@ export default function About(): JSX.Element {
 				</section>
 				<section className={styles.variableText}>
 					<div className={styles.headers}>
-						<h3>
-							<a href="">Skills</a>
-						</h3>
-						<h3>
-							<a href="">Education</a>
-						</h3>
+						<h3>Skills</h3>
+						<h3>Education</h3>
 					</div>
 					<h4>Web Development</h4>
 					<p>
-						I can create websites and webapps with SEO, responsiveness, and
-						accessibility in mind.
+						I can create websites and webapps with accessibility, responsiveness
+						and SEO in mind.
 					</p>
 					<h4>UI/UX Design</h4>
 					<p>

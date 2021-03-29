@@ -36,6 +36,7 @@
 
 .textContainer h3 {
     font-size: clamp(1.2rem, 1.5vw, 3rem);
+    cursor: pointer;
 }
 
 .textContainer h4 {
