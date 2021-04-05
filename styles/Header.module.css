@@ -1,6 +1,14 @@
 .container {
+    position: fixed;
+    top: 0;
+    /* 8em to account for the margins */
+    width: calc(100% - 8em);
+    background-color: white;
+    z-index: 10;
+
     min-height: 8em;
-    padding: 0 3em;
+    /* 1em top is for the margin that no longer applies due to it being fixed */
+    padding: 1em 3em 0 3em;
 
     display: flex;
     justify-content: space-between;
@@ -29,6 +37,7 @@
 @media only screen and (max-width: 768px) {
     .container {
         padding: 0 1em;
+        width: calc(100% - 6em);
     }
 }
 
@@ -40,6 +49,12 @@
 
     .navBar {
         width: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: calc(100% - 2em);
     }
 }
 

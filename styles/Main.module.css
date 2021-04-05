@@ -1,4 +1,6 @@
 .main {
+    /* 11em is the header's height and this element's padding */
+    margin-top: 11em;
     padding: 0 3em;
     /* 12 rem is the header's height */
     min-height: calc(100vh - 12rem);
