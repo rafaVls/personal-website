@@ -24,7 +24,7 @@ export default function Header({ children }: Props): JSX.Element {
 							<a href="#">Blog</a>
 						</li>
 						<li>
-							<a href="#">Portfolio</a>
+							<a href="#portfolio">Portfolio</a>
 						</li>
 					</ul>
 				</nav>
