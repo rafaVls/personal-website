@@ -34,30 +34,55 @@
     font-weight: 500;
 }
 
-.textContainer h3 {
+.headers h3 {
     font-size: clamp(1.2rem, 1.5vw, 3rem);
 }
 
-.textContainer h3 button{
+.headers h3::after {
+    content: "";
+    display: block;
+
+    width: 100%;
+    height: 3px;
+
+    transform: scaleX(0);
+    transform-origin: right;
+    
+    background-color: black;
+    transition: transform 300ms ease-in;
+}
+
+.headers h3:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.headers button{
     cursor: pointer;
     border: none;
-    outline-offset: 5px;
+    background-color: inherit;
+    outline-offset: 10px;
 
     font-family: inherit;
     font-size: inherit;
+
+    transition: color 250ms ease-in;
 }
 
 .textContainer h4 {
     font-size: clamp(1.15rem, 1.25vw, 3rem);
-
 }
 
 .textContainer p {
     font-size: clamp(1.2rem, 1.25vw, 3rem);
 }
 
-.variableText p:first-of-type {
+.skillsAndEducation p:first-of-type {
     margin-bottom: 1rem;
+}
+
+.selected{
+    color: blue;
 }
 
 .headers {
