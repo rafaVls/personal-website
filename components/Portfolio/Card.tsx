@@ -1,17 +1,25 @@
 import styles from "./Card.module.css";
 
-export default function Card(): JSX.Element {
+type Props = {
+	imgSrc: string;
+	title: string;
+	description: string;
+};
+
+export default function Card({
+	imgSrc,
+	title,
+	description
+}: Props): JSX.Element {
 	return (
 		<div className={styles.card}>
 			<img
-				src="images/Homepage.png"
+				src={imgSrc}
 				alt="Screenshot of the project's webpage."
+				loading="lazy"
 			/>
 			<div className={styles.line}></div>
-			<p data-before="Title">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-				delectus non dolores rem consequuntur error.
-			</p>
+			<p data-before={title}>{description}</p>
 		</div>
 	);
 }
