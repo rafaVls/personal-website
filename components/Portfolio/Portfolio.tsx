@@ -5,7 +5,8 @@ export default function Portfolio(): JSX.Element {
 	return (
 		<section className={styles.container} id="portfolio">
 			<h5>Portfolio</h5>
-			<div className={styles.cards}>
+			<div className={styles.cardGrid}>
+				<Card />
 				<Card />
 				<Card />
 			</div>
