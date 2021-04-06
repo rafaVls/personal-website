@@ -8,7 +8,6 @@ export default function Portfolio(): JSX.Element {
 			<div className={styles.cardGrid}>
 				<Card />
 				<Card />
-				<Card />
 			</div>
 		</section>
 	);
