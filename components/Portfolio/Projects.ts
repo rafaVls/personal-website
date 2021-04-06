@@ -8,7 +8,7 @@ export interface Project {
 
 const Projects: Project[] = [
 	{
-		img: "/",
+		img: "/images/projects/weatherly.png",
 		title: "Weatherly",
 		description:
 			"A fullstack weather app made with Reactjs, Expressjs and Typescript.",
@@ -16,7 +16,7 @@ const Projects: Project[] = [
 		repo: "https://github.com/rafaVls/Fullstack-Weatherly"
 	},
 	{
-		img: "/",
+		img: "/images/projects/homepage.png",
 		title: "Personal Website",
 		description:
 			"This is a website made using Next.js, a static site generator; and Ghost, a headless cms for the blog section.",
