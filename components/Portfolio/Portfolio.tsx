@@ -3,16 +3,17 @@ import Projects, { Project } from "./Projects";
 import styles from "./Portfolio.module.css";
 
 export default function Portfolio(): JSX.Element {
-	const cards = Projects.map((project: Project, index: number) => {
-		return (
-			<Card
-				key={index}
-				imgSrc={project.img}
-				title={project.title}
-				description={project.description}
-			/>
-		);
-	});
+	const cards = Projects.map((project: Project, index: number) => (
+		<Card
+			key={index}
+			imgSrc={project.img}
+			title={project.title}
+			description={project.description}
+			stack={project.stack}
+			link={project.link}
+			github={project.repo}
+		/>
+	));
 
 	return (
 		<section className={styles.container} id="portfolio">

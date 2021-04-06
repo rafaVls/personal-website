@@ -4,12 +4,18 @@ type Props = {
 	imgSrc: string;
 	title: string;
 	description: string;
+	stack: string[];
+	link: string;
+	github: string;
 };
 
 export default function Card({
 	imgSrc,
 	title,
-	description
+	description,
+	stack,
+	link,
+	github
 }: Props): JSX.Element {
 	return (
 		<div className={styles.card}>
@@ -20,6 +26,19 @@ export default function Card({
 			/>
 			<div className={styles.line}></div>
 			<p data-before={title}>{description}</p>
+			<p data-before="Stack">
+				{stack.map((item, index) =>
+					index !== stack.length - 1 ? `${item}, ` : item
+				)}
+			</p>
+			<div>
+				<a href={github} target="_blank" rel="noreferrer">
+					<img src="/images/github.svg" alt="Github" title="Github repo" />
+				</a>
+				<a href={link} target="_blank" rel="noreferrer">
+					<img src="/images/link.svg" alt="Website" title="Website" />
+				</a>
+			</div>
 		</div>
 	);
 }
