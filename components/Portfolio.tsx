@@ -1,8 +1,9 @@
 import Card from "./Card";
+import styles from "../styles/Portfolio.module.css";
 
 export default function Portfolio(): JSX.Element {
 	return (
-		<section id="portfolio">
+		<section className={styles.container} id="portfolio">
 			<h5>Portfolio</h5>
 			<Card />
 		</section>
