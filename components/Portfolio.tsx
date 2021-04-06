@@ -5,7 +5,10 @@ export default function Portfolio(): JSX.Element {
 	return (
 		<section className={styles.container} id="portfolio">
 			<h5>Portfolio</h5>
-			<Card />
+			<div className={styles.cards}>
+				<Card />
+				<Card />
+			</div>
 		</section>
 	);
 }
