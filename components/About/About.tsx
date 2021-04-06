@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from "react";
-import styles from "../styles/About.module.css";
+import styles from "./About.module.css";
 
 const skills: JSX.Element = (
 	<>

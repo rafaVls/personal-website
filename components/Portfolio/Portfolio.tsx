@@ -1,5 +1,5 @@
 import Card from "./Card";
-import styles from "../styles/Portfolio.module.css";
+import styles from "./Portfolio.module.css";
 
 export default function Portfolio(): JSX.Element {
 	return (
