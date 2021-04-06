@@ -66,9 +66,3 @@
         grid-row: 3/4;
     }
 }
-
-@media only screen and (max-width: 600px) {
-    .main {
-        min-height: calc(100vh - 9rem);
-    }
-}

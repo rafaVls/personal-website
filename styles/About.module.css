@@ -1,6 +1,6 @@
 .container {
-    margin: 20rem 0 4rem 0;
-    padding: 1rem;
+    /* margin-top: 20rem; */
+    padding: 10rem 1rem 1rem 1rem;
 
     display: flex;
     justify-content: space-between;
