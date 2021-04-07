@@ -10,7 +10,7 @@ export default function Main(): JSX.Element {
 				</p>
 				<p className={styles.normalText}>I am a Web Developer</p>
 			</section>
-			<img src="images/laptop.svg" alt="" />
+			<img src="images/laptop.svg" alt="A laptop creating a website." />
 			<a href="#about">&gt;</a>
 		</main>
 	);
