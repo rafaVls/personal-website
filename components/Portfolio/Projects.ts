@@ -23,7 +23,7 @@ const Projects: Project[] = [
 		description:
 			"This is a website made using Next.js, a static site generator; and Ghost, a headless cms for the blog section.",
 		stack: ["Node", "Nextjs", "Ghost CMS", "Typescript"],
-		link: "",
+		link: "/",
 		repo: "https://github.com/rafaVls/personal-website"
 	}
 ];

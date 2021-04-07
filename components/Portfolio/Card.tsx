@@ -35,7 +35,7 @@ export default function Card({
 				<a href={github} target="_blank" rel="noreferrer">
 					<img src="/images/github.svg" alt="Github" title="Github repo" />
 				</a>
-				<a href={link} target="_blank" rel="noreferrer">
+				<a href={link}>
 					<img src="/images/link.svg" alt="Website" title="Website" />
 				</a>
 			</div>

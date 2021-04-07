@@ -1,8 +1,9 @@
 .container {
     position: fixed;
     top: 0;
+    left: 0;
     /* 8em to account for the margins */
-    width: calc(100% - 8em);
+    width: 100%;
     background-color: white;
     z-index: 10;
 
@@ -34,13 +35,6 @@
     font-size: clamp(1.25rem, 1.5vw, 3rem);
 }
 
-@media only screen and (max-width: 768px) {
-    .container {
-        padding: 0 1em;
-        width: calc(100% - 6em);
-    }
-}
-
 @media only screen and (max-width: 700px) {
     .container {
         flex-direction: column;
@@ -49,12 +43,6 @@
 
     .navBar {
         width: 80%;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .container {
-        width: calc(100% - 2em);
     }
 }
 
