@@ -1,16 +1,20 @@
+import { useRouter } from "next/router";
 import styles from "./Header.module.css";
 
 export default function Header(): JSX.Element {
+	const pathname = useRouter().pathname;
+	const homeHref = pathname === "/" ? "#" : "/";
+
 	return (
 		<>
 			<header className={styles.container}>
 				<h1>
-					<a href="/">&lt;Rafael /&gt;</a>
+					<a href={homeHref}>&lt;Rafael /&gt;</a>
 				</h1>
 				<nav className={styles.navBar}>
 					<ul className={styles.navList}>
 						<li>
-							<a href="/">Home</a>
+							<a href={homeHref}>Home</a>
 						</li>
 						<li>
 							<a href="#about">About</a>
