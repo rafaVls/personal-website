@@ -19,7 +19,7 @@ export default function Footer(): JSX.Element {
 					</a>
 				</li>
 			</ul>
-			<p>Made by Rafael Avilés Fierro</p>
+			<p>Made by Rafael Avilés Fierro - rafa.vfierro@outlook.com</p>
 		</footer>
 	);
 }
