@@ -1,6 +1,6 @@
+import Layout from "./Layout/Layout";
 import About from "./About/About";
-import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Portfolio from "./Portfolio/Portfolio";
 
-export { About, Header, Main, Portfolio };
+export { About, Main, Portfolio, Layout };
