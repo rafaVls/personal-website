@@ -22,17 +22,19 @@
     display: flex;
     justify-content: space-between;
 
-    width: 10em;
+    width: max(12em, 10vw);
 }
 
 
-.footer > ul > li {
+.footer li {
     font-family: var(--font-accent);
+    font-size: clamp(1.125rem, 1.125vw, 2rem);
 }
 
 .footer > p {
     width: 80%;
 
+    font-size: clamp(1rem, 1.25vw, 2rem);
     text-align: center;
 }
 
