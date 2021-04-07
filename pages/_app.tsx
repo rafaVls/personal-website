@@ -1,11 +1,11 @@
 import { AppProps } from "next/app";
-import { Header } from "../components/index";
+import { Layout } from "../components/index";
 import "../styles/globals.css";
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 	return (
-		<Header>
+		<Layout>
 			<Component {...pageProps} />
-		</Header>
+		</Layout>
 	);
 }

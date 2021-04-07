@@ -1,11 +1,6 @@
-import { ReactNode } from "react";
 import styles from "./Header.module.css";
 
-interface Props {
-	children: ReactNode;
-}
-
-export default function Header({ children }: Props): JSX.Element {
+export default function Header(): JSX.Element {
 	return (
 		<>
 			<header className={styles.container}>
@@ -29,7 +24,6 @@ export default function Header({ children }: Props): JSX.Element {
 					</ul>
 				</nav>
 			</header>
-			{children}
 		</>
 	);
 }
