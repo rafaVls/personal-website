@@ -59,6 +59,11 @@
 }
 
 @media only screen and (max-width: 320px) {
+    .container {
+        width: 100%;
+        left: 0;
+    }
+
     .navBar {
         width: 100%;
     }
