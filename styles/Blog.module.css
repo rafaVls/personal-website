@@ -1,10 +1,13 @@
 .container {
     padding: 2em 0;
+    margin-bottom: 2em;
+
     display: flex;
     justify-content: center;
 }
 
 .container > h2 {
+
     font-family: var(--font-accent);
     font-size: clamp(1.25rem, 2vw, 4rem);
     font-weight: 500;
@@ -37,4 +40,17 @@
 .container > h2 > a {
     text-decoration: underline;
     text-underline-offset: 0.05em;
+}
+
+.container ~ a {
+    padding: .5em 1em;
+
+    cursor: pointer;
+
+    border: 2px solid black;
+    border-radius: 50px;
+    outline-offset: 10px;
+
+    font-family: var(--font-primary);
+    font-size: clamp(1.2rem, 1.5vw, 3rem);
 }
