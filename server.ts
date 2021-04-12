@@ -12,26 +12,22 @@ const api = new GhostContentAPI({
 	version: "v3"
 });
 
-async function getPosts(): Promise<void> {
-	interface Post {
-		title: string;
-	}
-
+app.get("/posts", async (req, res) => {
 	try {
 		const posts = await api.posts.browse({
-			filter: "tag:getting-started"
+			limit: 5,
+			include: "tags"
 		});
-		posts.forEach((post: Post) => {
-			console.log(post.title);
+		res.status(200).json({
+			success: true,
+			posts
 		});
 	} catch (err) {
-		console.log(err.message);
+		res.status(500).json({
+			success: false,
+			message: err.message
+		});
 	}
-}
-
-app.get("/", (req, res) => {
-	res.status(200).send("Hello from server!");
-	getPosts();
 });
 
 app.listen(port, () =>
