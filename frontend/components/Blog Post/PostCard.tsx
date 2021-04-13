@@ -1,3 +1,5 @@
+import styles from "./PostCard.module.css";
+
 type Props = {
 	img: string;
 	title: string;
@@ -21,14 +23,16 @@ export default function PostCard({
 
 	return (
 		<>
-			<img src={img} alt="" />
-			<h3>{title}</h3>
-			<p>{excerpt}</p>
-			<p>
-				{publishedDate}
-				<strong> · </strong>
-				{reading_time} minute read
-			</p>
+			<img src={img} alt="" className={styles.featureImage} />
+			<div className={styles.postDetails}>
+				<h3>{title}</h3>
+				<p>{excerpt}</p>
+				<p>
+					{publishedDate}
+					<strong> · </strong>
+					{reading_time} minute read
+				</p>
+			</div>
 		</>
 	);
 }

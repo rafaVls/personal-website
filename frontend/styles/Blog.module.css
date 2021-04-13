@@ -54,3 +54,39 @@
     font-family: var(--font-primary);
     font-size: clamp(1.2rem, 1.5vw, 3rem);
 }
+
+.postCards {
+    margin: 4em 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2em;
+}
+
+@media only screen and (min-width: 768px) {
+    .postCards {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .postCards li {
+        grid-column:  auto / span 2;
+    }
+    
+    .postCards li:nth-child(6n + 1) {
+        grid-column: 1 / 7;
+        display: flex;
+    }
+    
+    .postCards li:nth-child(6n + 1) > img {
+        width: 60%;
+        max-height: 350px;
+        object-fit: cover;
+    }
+    
+    .postCards li:nth-child(5n) {
+        grid-column: 1 / 4;
+    }
+    
+    .postCards li:nth-child(5n) + li {
+        grid-column: 4 / 7;
+    }
+}

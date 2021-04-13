@@ -31,21 +31,19 @@ export default function Blog({
 
 			<a href="/tags">Browse by tags</a>
 
-			<section>
-				<ul>
-					{posts.map((post: Post, index: number) => (
-						<li key={index}>
-							<PostCard
-								img={post.feature_image}
-								title={post.title}
-								excerpt={post.excerpt}
-								reading_time={post.reading_time}
-								published_at={post.published_at}
-							/>
-						</li>
-					))}
-				</ul>
-			</section>
+			<ul className={styles.postCards}>
+				{posts.map((post: Post, index: number) => (
+					<li key={index}>
+						<PostCard
+							img={post.feature_image}
+							title={post.title}
+							excerpt={post.excerpt}
+							reading_time={post.reading_time}
+							published_at={post.published_at}
+						/>
+					</li>
+				))}
+			</ul>
 		</>
 	);
 }

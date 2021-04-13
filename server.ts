@@ -15,7 +15,6 @@ const api = new GhostContentAPI({
 app.get("/posts", async (req, res) => {
 	try {
 		const posts = await api.posts.browse({
-			limit: 5,
 			include: "tags"
 		});
 		res.status(200).json({
