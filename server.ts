@@ -1,10 +1,34 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import express from "express";
+const GhostContentAPI = require("@tryghost/content-api");
 const app = express();
-const port = 5000;
+const dotenv = require("dotenv");
+const port = process.env.PORT || 5000;
+dotenv.config({ path: "./.env.local" });
 
-app.get("/", (_, res) => {
-	res.status(200).send("ok");
+const api = new GhostContentAPI({
+	url: process.env.GHOST_HOST,
+	key: process.env.GHOST_API_KEY,
+	version: "v3"
 });
 
-app.listen(port, () => console.log(`Running on port ${port}`));
+app.get("/posts", async (req, res) => {
+	try {
+		const posts = await api.posts.browse({
+			include: "tags"
+		});
+		res.status(200).json({
+			success: true,
+			posts
+		});
+	} catch (err) {
+		res.status(500).json({
+			success: false,
+			message: err.message
+		});
+	}
+});
+
+app.listen(port, () =>
+	console.log(`App listening on http://localhost:${port}`)
+);
