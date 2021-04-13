@@ -71,13 +71,13 @@
         grid-column:  auto / span 2;
     }
     
-    .postCards li:nth-child(6n + 1) {
+    .postCards li:nth-child(6n - 5) {
         position: relative;
         grid-column: 1 / 7;
         display: flex;
     }
 
-    .postCards li:nth-child(6n + 1)::after {
+    .postCards li:nth-child(6n - 5)::after {
         content: "";
         position: absolute;
         top: calc(100% + 1.5em);
@@ -86,23 +86,23 @@
         background-color: gray;
     }
     
-    .postCards li:nth-child(6n + 1) > img {
+    .postCards li:nth-child(6n - 5) > img {
         width: 60%;
         max-height: 350px;
         object-fit: cover;
     }
 
-    .postCards li:nth-child(6n + 1) > div {
+    .postCards li:nth-child(6n - 5) > div {
         padding-left: 2em;
     }
     
-    .postCards li:nth-child(5n) {
+    .postCards li:nth-child(6n - 1) {
         position: relative;
         grid-column: 1 / 4;
     }
 
-    .postCards li:nth-child(5n)::before, 
-    .postCards li:nth-child(5n)::after {
+    .postCards li:nth-child(6n - 1)::before, 
+    .postCards li:nth-child(6n - 1)::after {
         content: "";
         position: absolute;
         display: block;
@@ -111,16 +111,16 @@
         background-color: gray;
     }
 
-    .postCards li:nth-child(5n)::before {
+    .postCards li:nth-child(6n - 1)::before {
         bottom: calc(100% + 1.5em);
     }
     
-    .postCards li:nth-child(5n)::after {
+    .postCards li:nth-child(6n - 1)::after {
         top: calc(100% + 1.5em);
     }
 
 
-    .postCards li:nth-child(5n) + li {
+    .postCards li:nth-child(6n - 1) + li {
         grid-column: 4 / 7;
     }
 }
