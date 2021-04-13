@@ -1,13 +1,35 @@
 .postDetails {
-    max-width: 50ch;
+    max-width: 60ch;
     padding: 1em 0;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.5em;
+    gap: 1em;
+    line-height: 1.6;
+}
+
+.postDetails h3 {
+    font-family: var(--font-primary);
+    font-size: clamp(1.5rem, 2vw, 4rem);
+}
+
+.postDetails p:first-of-type {
+    font-family: var(--font-primary);
+    font-size: clamp(1.2rem, 1.5vw, 3rem);
+}
+
+.postDetails p:last-of-type {
+    font-family: var(--font-accent);
+    font-size: clamp(0.8rem, 1.15vw, 1.5rem);
 }
 
 .featureImage {
     max-width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+    .postDetails {
+        max-width: 120ch;
+    }
 }
