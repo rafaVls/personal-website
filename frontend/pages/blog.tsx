@@ -1,4 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+// import Link from "next/link";
 import { server } from "../config";
 import { PostCard } from "../components/index";
 import styles from "../styles/Blog.module.css";
@@ -9,11 +10,14 @@ interface Post {
 	feature_image: string;
 	reading_time: number;
 	published_at: string;
+	slug: string;
 }
 
 export default function Blog({
 	posts
 }: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
+	// TODO: Adding a element inside the Link element causes some layout issues
+
 	return (
 		<>
 			<span className={styles.container}>
@@ -34,6 +38,8 @@ export default function Blog({
 			<ul className={styles.postCards}>
 				{posts.map((post: Post, index: number) => (
 					<li key={index}>
+						{/* <Link href={`/posts/${post.slug}`}> */}
+						{/* <a> */}
 						<PostCard
 							img={post.feature_image}
 							title={post.title}
@@ -41,6 +47,8 @@ export default function Blog({
 							reading_time={post.reading_time}
 							published_at={post.published_at}
 						/>
+						{/* </a> */}
+						{/* </Link> */}
 					</li>
 				))}
 			</ul>
