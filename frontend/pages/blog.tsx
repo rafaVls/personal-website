@@ -1,5 +1,4 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-// import Link from "next/link";
 import { server } from "../config";
 import { PostCard } from "../components/index";
 import styles from "../styles/Blog.module.css";
@@ -38,17 +37,14 @@ export default function Blog({
 			<ul className={styles.postCards}>
 				{posts.map((post: Post, index: number) => (
 					<li key={index}>
-						{/* <Link href={`/posts/${post.slug}`}> */}
-						{/* <a> */}
 						<PostCard
 							img={post.feature_image}
 							title={post.title}
 							excerpt={post.excerpt}
 							reading_time={post.reading_time}
 							published_at={post.published_at}
+							slug={post.slug}
 						/>
-						{/* </a> */}
-						{/* </Link> */}
 					</li>
 				))}
 			</ul>

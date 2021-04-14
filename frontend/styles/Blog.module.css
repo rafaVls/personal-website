@@ -58,8 +58,18 @@
 .postCards {
     margin: 4em 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
     gap: 3em;
+}
+
+/* 
+Between 676-767 px of width there's a double bottom border
+It can be fixed by increasing the min width of the columns,
+but it'd make the grid less responsive. I think it's fine, 
+it's just a small margin of error and it doesn't look terrible.
+ */
+.postCards > li {
+    border-bottom: 1px solid gray;
 }
 
 @media only screen and (min-width: 768px) {
@@ -69,6 +79,7 @@
 
     .postCards > li {
         grid-column:  auto / span 2;
+        border: 0;
     }
     
     .postCards li:nth-child(6n - 5) {
@@ -119,20 +130,7 @@
         top: calc(100% + 1.5em);
     }
 
-
     .postCards li:nth-child(6n - 1) + li {
         grid-column: 4 / 7;
     }
-}
-
-@media only screen and (max-width: 768px) {
-    .postCards > li::after {
-        content: "";
-        display: block;
-        margin-top: 1.5em;
-    
-        width: 100%;
-        height: 1px;
-        background-color: gray;
-    }    
 }
