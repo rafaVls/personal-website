@@ -15,8 +15,6 @@ interface Post {
 export default function Blog({
 	posts
 }: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
-	// TODO: Adding a element inside the Link element causes some layout issues
-
 	return (
 		<>
 			<span className={styles.container}>
