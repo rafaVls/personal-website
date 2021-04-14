@@ -9,11 +9,14 @@ interface Post {
 	feature_image: string;
 	reading_time: number;
 	published_at: string;
+	slug: string;
 }
 
 export default function Blog({
 	posts
 }: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
+	// TODO: Adding a element inside the Link element causes some layout issues
+
 	return (
 		<>
 			<span className={styles.container}>
@@ -40,6 +43,7 @@ export default function Blog({
 							excerpt={post.excerpt}
 							reading_time={post.reading_time}
 							published_at={post.published_at}
+							slug={post.slug}
 						/>
 					</li>
 				))}

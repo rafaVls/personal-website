@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./PostCard.module.css";
 
 type Props = {
@@ -6,6 +7,7 @@ type Props = {
 	excerpt: string;
 	reading_time: number;
 	published_at: string;
+	slug: string;
 };
 
 export default function PostCard({
@@ -13,7 +15,8 @@ export default function PostCard({
 	title,
 	excerpt,
 	reading_time,
-	published_at
+	published_at,
+	slug
 }: Props): JSX.Element {
 	const publishedDate = new Date(published_at).toLocaleDateString("en-GB", {
 		year: "numeric",
@@ -23,10 +26,18 @@ export default function PostCard({
 
 	return (
 		<>
-			<img src={img} alt="" className={styles.featureImage} />
+			<Link href={`posts/${slug}`}>
+				<a>
+					<img src={img} alt="" className={styles.featureImage} />
+				</a>
+			</Link>
 			<div className={styles.postDetails}>
-				<h3>{title}</h3>
-				<p>{excerpt}</p>
+				<Link href={`posts/${slug}`}>
+					<a>
+						<h3>{title}</h3>
+						<p>{excerpt}</p>
+					</a>
+				</Link>
 				<p>
 					{publishedDate}
 					<strong> · </strong>
