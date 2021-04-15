@@ -26,13 +26,13 @@ export default function PostCard({
 
 	return (
 		<>
-			<Link href={`posts/${slug}`}>
+			<Link href={`/posts/${slug}`}>
 				<a>
 					<img src={img} alt="" className={styles.featureImage} />
 				</a>
 			</Link>
 			<div className={styles.postDetails}>
-				<Link href={`posts/${slug}`}>
+				<Link href={`/posts/${slug}`}>
 					<a>
 						<h3>{title}</h3>
 						<p>{excerpt}</p>
