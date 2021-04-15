@@ -29,6 +29,31 @@ app.get("/posts", async (req, res) => {
 	}
 });
 
+app.get("/post/:slug", async (req, res) => {
+	const slugFormat = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+	const slug = req.params.slug;
+
+	if (slugFormat.test(slug)) {
+		try {
+			const post = await api.posts.read({ slug }, { formats: ["html"] });
+			res.status(200).json({
+				success: true,
+				post
+			});
+		} catch (err) {
+			res.status(500).json({
+				success: false,
+				message: err.message
+			});
+		}
+	} else {
+		res.status(500).json({
+			success: false,
+			message: "Validation (slugFormat) failed for slug."
+		});
+	}
+});
+
 app.listen(port, () =>
 	console.log(`App listening on http://localhost:${port}`)
 );
