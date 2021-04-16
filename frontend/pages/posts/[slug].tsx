@@ -1,14 +1,14 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import { Post as PostTypes } from "../../common/types";
+import { Post } from "../../common/types";
 import parse from "html-react-parser";
 import { server } from "../../config";
 
 interface Props {
-	post?: PostTypes;
-	posts?: PostTypes[];
+	post?: Post;
+	posts?: Post[];
 }
 
-export default function Post({ post }: Props): JSX.Element {
+export default function BlogPost({ post }: Props): JSX.Element {
 	const postContent = parse(post.html);
 
 	return (
