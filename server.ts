@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import express from "express";
 const GhostContentAPI = require("@tryghost/content-api");
+import { Post } from "./types/ghost";
+import express from "express";
 const app = express();
 const dotenv = require("dotenv");
 const port = process.env.PORT || 5000;
@@ -14,7 +15,7 @@ const api = new GhostContentAPI({
 
 app.get("/posts", async (req, res) => {
 	try {
-		const posts = await api.posts.browse({
+		const posts: Post[] = await api.posts.browse({
 			include: "tags,authors"
 		});
 		res.status(200).json({
@@ -35,7 +36,7 @@ app.get("/post/:slug", async (req, res) => {
 
 	if (slugFormat.test(slug)) {
 		try {
-			const post = await api.posts.read({
+			const post: Post = await api.posts.read({
 				slug,
 				include: "tags,authors",
 				formats: ["html"]
