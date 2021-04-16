@@ -15,7 +15,7 @@ const api = new GhostContentAPI({
 app.get("/posts", async (req, res) => {
 	try {
 		const posts = await api.posts.browse({
-			include: "tags"
+			include: "tags, authors"
 		});
 		res.status(200).json({
 			success: true,
@@ -35,7 +35,12 @@ app.get("/post/:slug", async (req, res) => {
 
 	if (slugFormat.test(slug)) {
 		try {
-			const post = await api.posts.read({ slug }, { formats: ["html"] });
+			const post = await api.posts.read(
+				{ slug },
+				{ formats: ["html"] },
+				{ include: "tags, authors" }
+			);
+
 			res.status(200).json({
 				success: true,
 				post
