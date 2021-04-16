@@ -29,14 +29,7 @@ export default function Blog({ posts }: Props): JSX.Element {
 			<ul className={styles.postCards}>
 				{posts.map((post, index) => (
 					<li key={index}>
-						<PostCard
-							img={post.feature_image}
-							title={post.title}
-							excerpt={post.excerpt}
-							reading_time={post.reading_time}
-							published_at={post.published_at}
-							slug={post.slug}
-						/>
+						<PostCard post={post} />
 					</li>
 				))}
 			</ul>
