@@ -1,11 +1,14 @@
-import { GetStaticProps, InferGetStaticPropsType, GetStaticPaths } from "next";
+import { GetStaticProps, GetStaticPaths } from "next";
+import { Post as PostTypes } from "../../common/types";
 import parse from "html-react-parser";
 import { server } from "../../config";
 
-// TODO: Use html-react-parser to convert fetched post's html to jsx safely
-export default function Post({
-	post
-}: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
+interface Props {
+	post?: PostTypes;
+	posts?: PostTypes[];
+}
+
+export default function Post({ post }: Props): JSX.Element {
 	const postContent = parse(post.html);
 
 	return (
@@ -37,7 +40,7 @@ export default function Post({
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const res = await fetch(`${server}/post/${params.slug}`);
-	const { post } = await res.json();
+	const { post }: Props = await res.json();
 
 	return {
 		props: { post }
@@ -46,7 +49,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const res = await fetch(`${server}/posts`);
-	const { posts } = await res.json();
+	const { posts }: Props = await res.json();
 
 	const paths = posts.map(post => ({
 		params: { slug: post.slug }
