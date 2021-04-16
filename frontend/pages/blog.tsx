@@ -1,20 +1,14 @@
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetStaticProps } from "next";
 import { server } from "../config";
+import { Post } from "../common/types";
 import { PostCard } from "../components/index";
 import styles from "../styles/Blog.module.css";
 
-interface Post {
-	title: string;
-	excerpt: string;
-	feature_image: string;
-	reading_time: number;
-	published_at: string;
-	slug: string;
+interface Props {
+	posts: Post[];
 }
 
-export default function Blog({
-	posts
-}: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
+export default function Blog({ posts }: Props): JSX.Element {
 	return (
 		<>
 			<span className={styles.container}>
@@ -33,7 +27,7 @@ export default function Blog({
 			<a href="/tags">Browse by tags</a>
 
 			<ul className={styles.postCards}>
-				{posts.map((post: Post, index: number) => (
+				{posts.map((post, index) => (
 					<li key={index}>
 						<PostCard
 							img={post.feature_image}
