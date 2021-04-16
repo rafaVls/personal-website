@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from "next";
+import Link from "next/link";
 import { Post } from "../../common/types";
 import parse from "html-react-parser";
 import { server } from "../../config";
@@ -14,20 +15,33 @@ export default function BlogPost({ post }: Props): JSX.Element {
 	return (
 		<article>
 			<header>
-				<a>{post.primary_tag.name}</a>
+				<Link href={`/tag/${post.primary_tag.slug}`}>
+					<a>{post.primary_tag.name}</a>
+				</Link>
 				<h2>{post.title}</h2>
 				<p>{post.excerpt}</p>
 				<section>
 					<figure>
-						<img
-							src={post.primary_author.profile_image}
-							alt={post.primary_author.name}
-						/>
+						<Link href={`/author/${post.primary_author.slug}`}>
+							<a>
+								<img
+									src={post.primary_author.profile_image}
+									alt={post.primary_author.name}
+								/>
+							</a>
+						</Link>
 					</figure>
-					<p>
-						{post.published_at} <strong> · </strong> {post.reading_time} minute
-						read
-					</p>
+					<div>
+						<Link href={`/author/${post.primary_author.slug}`}>
+							<a>
+								<strong>{post.primary_author.name}</strong>
+							</a>
+						</Link>
+						<p>
+							{post.published_at} <strong> · </strong> {post.reading_time}{" "}
+							minute read
+						</p>
+					</div>
 				</section>
 			</header>
 			<section>
