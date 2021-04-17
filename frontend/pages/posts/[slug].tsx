@@ -14,7 +14,7 @@ interface Props {
 export default function BlogPost({ post }: Props): JSX.Element {
 	const options: HTMLReactParserOptions = {
 		replace: ({ tagName, children }: Element) => {
-			if (tagName && tagName.startsWith("h", 0)) {
+			if (tagName && /h[1-2]/.test(tagName)) {
 				switch (tagName) {
 					case "h1":
 						return <h2>{domToReact(children, options)}</h2>;
@@ -45,6 +45,7 @@ export default function BlogPost({ post }: Props): JSX.Element {
 								<img
 									src={post.primary_author.profile_image}
 									alt={post.primary_author.name}
+									id="profileImage"
 								/>
 							</a>
 						</Link>
@@ -63,7 +64,9 @@ export default function BlogPost({ post }: Props): JSX.Element {
 				</section>
 			</header>
 			<section>
-				<img src={post.feature_image} alt={post.title} />
+				{post.feature_image && (
+					<img src={post.feature_image} alt={post.title} />
+				)}
 				{postContent}
 			</section>
 		</article>
