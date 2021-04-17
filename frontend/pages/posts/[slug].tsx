@@ -1,7 +1,8 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
 import { Post } from "../../common/types";
-import parse from "html-react-parser";
+import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
+import { Element } from "domhandler/lib/node";
 import { server } from "../../config";
 
 interface Props {
@@ -9,8 +10,25 @@ interface Props {
 	posts?: Post[];
 }
 
+//! parse does NOT sanitize html. I gotta use a sanitizer later on the server side for this.
 export default function BlogPost({ post }: Props): JSX.Element {
-	const postContent = parse(post.html);
+	const options: HTMLReactParserOptions = {
+		replace: ({ tagName, children }: Element) => {
+			if (tagName && tagName.startsWith("h", 0)) {
+				switch (tagName) {
+					case "h1":
+						return <h2>{domToReact(children, options)}</h2>;
+
+					case "h2":
+						return <h3>{domToReact(children, options)}</h3>;
+
+					default:
+						break;
+				}
+			}
+		}
+	};
+	const postContent = parse(post.html, options);
 
 	return (
 		<article>
