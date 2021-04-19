@@ -1,0 +1,108 @@
+.article {
+    width: clamp(40ch, 85ch, 90ch);
+    margin: 10em auto 0 auto;
+    font-family: var(--font-primary);
+
+    --tag-headerp-size: clamp(1.5rem, 1.25vw, 3.5rem);
+    --title-size: clamp(3rem, 4.75vw, 6rem);
+    --h3-size: clamp(2rem, 2vw, 15rem);
+    --article-text-size: clamp(1.5rem, 1.5vw, 4.5rem);
+    --code-font-size: clamp(1.25rem, 1vw, 2rem);
+}
+
+.article h2 {
+    margin: 0.25em 0;
+    font-size: var(--title-size);
+}
+
+.article h3 {
+    font-size: var(--h3-size);
+}
+
+.article img {
+    max-width: 100%;
+}
+
+.article strong {
+    font-weight: 900;
+}
+
+.article pre {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.article img[id="profileImage"] {
+    max-width: 50px;
+    margin-right: 0.5em;
+    
+    border-radius: 50%;
+}
+
+.article img[id="featureImage"] {
+    margin: 1em 0 0.5em 0;
+}
+
+.article :is(em, i) {
+    font-style: italic;
+}
+
+.article > header > a {
+    font-family: var(--font-accent);
+    font-size: var(--tag-headerp-size);
+}
+
+.article > header > p {
+    font-size: var(--article-text-size);
+}
+
+.article > header > p::after {
+    content: "";
+    display: block;
+    margin-top: 1em;
+    max-width: 100%;
+    height: 1px;
+    background-color: gray;
+}
+
+.article > header > section {
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
+    font-size: var(--tag-headerp-size);
+}
+
+.article > section > p {
+    line-height: 1.6;
+}
+
+.article > section a {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+}
+
+.article > section:not(h3) {
+    font-size: var(--article-text-size);
+}
+
+.article > section :is(ul, ol) {
+    padding: 0 1em;
+}
+
+.article > section :is(h2, h3, li, pre) {
+    line-height: 1.5;
+    margin: 1.5em 0 0.25em 0;
+}
+
+.article > section > pre{
+    padding: 1em 0 1em 1em;
+    font-size: var(--code-font-size);
+    color: beige;
+    background-color: #222;
+}
+
+@media only screen and (min-width: 1440px) {
+    .article {
+        width: 80%;
+    }
+}

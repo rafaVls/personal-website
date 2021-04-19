@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import express from "express";
 const GhostContentAPI = require("@tryghost/content-api");
+import { Post } from "./types/ghost";
+import { formatDate } from "./utils/helpers";
+import express from "express";
 const app = express();
 const dotenv = require("dotenv");
 const port = process.env.PORT || 5000;
@@ -14,9 +16,14 @@ const api = new GhostContentAPI({
 
 app.get("/posts", async (req, res) => {
 	try {
-		const posts = await api.posts.browse({
-			include: "tags"
+		const posts: Post[] = await api.posts.browse({
+			include: "tags,authors"
 		});
+
+		posts.forEach(post => {
+			post.published_at = formatDate(post.published_at);
+		});
+
 		res.status(200).json({
 			success: true,
 			posts
@@ -25,6 +32,38 @@ app.get("/posts", async (req, res) => {
 		res.status(500).json({
 			success: false,
 			message: err.message
+		});
+	}
+});
+
+app.get("/post/:slug", async (req, res) => {
+	const slugFormat = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+	const slug = req.params.slug;
+
+	if (slugFormat.test(slug)) {
+		try {
+			const post: Post = await api.posts.read({
+				slug,
+				include: "tags,authors",
+				formats: ["html"]
+			});
+
+			post.published_at = formatDate(post.published_at);
+
+			res.status(200).json({
+				success: true,
+				post
+			});
+		} catch (err) {
+			res.status(500).json({
+				success: false,
+				message: err.message
+			});
+		}
+	} else {
+		res.status(500).json({
+			success: false,
+			message: "Validation (slugFormat) failed for slug."
 		});
 	}
 });

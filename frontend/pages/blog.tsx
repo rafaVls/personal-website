@@ -1,21 +1,20 @@
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { server } from "../config";
+import { GetStaticProps } from "next";
+import Link from "next/link";
+import { Post } from "../common/types";
+import { getPosts } from "../utils/helpers";
 import { PostCard } from "../components/index";
 import styles from "../styles/Blog.module.css";
 
-interface Post {
-	title: string;
-	excerpt: string;
-	feature_image: string;
-	reading_time: number;
-	published_at: string;
-	slug: string;
+interface Props {
+	posts: Post[];
 }
 
-export default function Blog({
-	posts
-}: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
-	// TODO: Adding a element inside the Link element causes some layout issues
+export default function Blog({ posts }: Props): JSX.Element {
+	const postCards = posts.map((post, index) => (
+		<li key={index}>
+			<PostCard post={post} />
+		</li>
+	));
 
 	return (
 		<>
@@ -32,29 +31,16 @@ export default function Blog({
 				</h2>
 			</span>
 
-			<a href="/tags">Browse by tags</a>
-
-			<ul className={styles.postCards}>
-				{posts.map((post: Post, index: number) => (
-					<li key={index}>
-						<PostCard
-							img={post.feature_image}
-							title={post.title}
-							excerpt={post.excerpt}
-							reading_time={post.reading_time}
-							published_at={post.published_at}
-							slug={post.slug}
-						/>
-					</li>
-				))}
-			</ul>
+			<Link href="/tags">
+				<a>Browse by tags</a>
+			</Link>
+			<ul className={styles.postCards}>{postCards}</ul>
 		</>
 	);
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const res = await fetch(`${server}/posts`);
-	const { posts } = await res.json();
+	const posts: Post[] = await getPosts();
 
 	return {
 		props: { posts }
