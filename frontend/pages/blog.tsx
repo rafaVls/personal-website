@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
-import { server } from "../config";
 import { Post } from "../common/types";
+import { getPosts } from "../utils/helpers";
 import { PostCard } from "../components/index";
 import styles from "../styles/Blog.module.css";
 
@@ -38,8 +38,7 @@ export default function Blog({ posts }: Props): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const res = await fetch(`${server}/posts`);
-	const { posts } = await res.json();
+	const posts: Post[] = await getPosts();
 
 	return {
 		props: { posts }

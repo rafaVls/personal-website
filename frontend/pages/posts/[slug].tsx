@@ -2,14 +2,13 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
 import { PostHeader } from "../../components/index";
 import { Post } from "../../common/types";
+import { getPosts, getPost } from "../../utils/helpers";
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { Element } from "domhandler/lib/node";
-import { server } from "../../config";
 import styles from "../../styles/BlogPost.module.css";
 
 interface Props {
-	post?: Post;
-	posts?: Post[];
+	post: Post;
 }
 
 //! parse does NOT sanitize html. I gotta use a sanitizer later on the server side for this.
@@ -51,8 +50,7 @@ export default function BlogPost({ post }: Props): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const res = await fetch(`${server}/post/${params.slug}`);
-	const { post }: Props = await res.json();
+	const post: Post = await getPost(params.slug);
 
 	return {
 		props: { post }
@@ -60,9 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const res = await fetch(`${server}/posts`);
-	const { posts }: Props = await res.json();
-
+	const posts: Post[] = await getPosts();
 	const paths = posts.map(post => ({
 		params: { slug: post.slug }
 	}));
