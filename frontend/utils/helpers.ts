@@ -18,3 +18,20 @@ export async function getPost(slug: string | string[]): Promise<Post> {
 
 	return post;
 }
+
+export const debounce = (fn: (...params: never[]) => void): (() => void) => {
+	let frame: number;
+	return (...params: never[]) => {
+		if (frame) {
+			cancelAnimationFrame(frame);
+		}
+
+		frame = requestAnimationFrame(() => {
+			fn(...params);
+		});
+	};
+};
+
+export const storeScroll = (): void => {
+	document.documentElement.dataset.scroll = window.scrollY.toString();
+};

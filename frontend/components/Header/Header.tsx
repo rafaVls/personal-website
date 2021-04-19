@@ -1,7 +1,18 @@
 import Link from "next/link";
+import { useEffect } from "react";
+import { debounce, storeScroll } from "../../utils/helpers";
 import styles from "./Header.module.css";
 
 export default function Header(): JSX.Element {
+	useEffect(() => {
+		if (document) {
+			document.addEventListener("scroll", debounce(storeScroll), {
+				passive: true
+			});
+			storeScroll();
+		}
+	}, []);
+
 	return (
 		<>
 			<header className={styles.container}>
