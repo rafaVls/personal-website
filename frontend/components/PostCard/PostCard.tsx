@@ -15,11 +15,6 @@ export default function PostCard({ post }: Props): JSX.Element {
 		published_at,
 		slug
 	} = post;
-	const publishedDate = new Date(published_at).toLocaleDateString("en-GB", {
-		year: "numeric",
-		month: "long",
-		day: "numeric"
-	});
 
 	return (
 		<>
@@ -36,7 +31,7 @@ export default function PostCard({ post }: Props): JSX.Element {
 					</a>
 				</Link>
 				<p>
-					{publishedDate}
+					{published_at}
 					<strong> · </strong>
 					{reading_time} minute read
 				</p>

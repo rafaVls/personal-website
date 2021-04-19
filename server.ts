@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const GhostContentAPI = require("@tryghost/content-api");
 import { Post } from "./types/ghost";
+import { formatDate } from "./utils/helpers";
 import express from "express";
 const app = express();
 const dotenv = require("dotenv");
@@ -18,6 +19,11 @@ app.get("/posts", async (req, res) => {
 		const posts: Post[] = await api.posts.browse({
 			include: "tags,authors"
 		});
+
+		posts.forEach(post => {
+			post.published_at = formatDate(post.published_at);
+		});
+
 		res.status(200).json({
 			success: true,
 			posts
@@ -41,6 +47,8 @@ app.get("/post/:slug", async (req, res) => {
 				include: "tags,authors",
 				formats: ["html"]
 			});
+
+			post.published_at = formatDate(post.published_at);
 
 			res.status(200).json({
 				success: true,
