@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
-import { PostDetails } from "../../components/index";
+import { PostHeader } from "../../components/index";
 import { Post } from "../../common/types";
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { Element } from "domhandler/lib/node";
@@ -38,32 +38,7 @@ export default function BlogPost({ post }: Props): JSX.Element {
 				<Link href={`/tag/${post.primary_tag.slug}`}>
 					<a>{post.primary_tag.name}</a>
 				</Link>
-				<h2>{post.title}</h2>
-				<p>{post.excerpt}</p>
-				<section>
-					<figure>
-						<Link href={`/author/${post.primary_author.slug}`}>
-							<a>
-								<img
-									src={post.primary_author.profile_image}
-									alt={post.primary_author.name}
-									id="profileImage"
-								/>
-							</a>
-						</Link>
-					</figure>
-					<div>
-						<Link href={`/author/${post.primary_author.slug}`}>
-							<a>
-								<strong>{post.primary_author.name}</strong>
-							</a>
-						</Link>
-						<PostDetails
-							published_at={post.published_at}
-							reading_time={post.reading_time}
-						/>
-					</div>
-				</section>
+				<PostHeader title={post.title} excerpt={post.excerpt} post={post} />
 			</header>
 			<section>
 				{post.feature_image && (

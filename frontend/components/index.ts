@@ -4,5 +4,6 @@ import Main from "./Main/Main";
 import Portfolio from "./Portfolio/Portfolio";
 import PostCard from "./PostCard/PostCard";
 import PostDetails from "./PostDetails/PostDetails";
+import PostHeader from "./PostHeader/PostHeader";
 
-export { About, Main, Portfolio, Layout, PostCard, PostDetails };
+export { About, Main, Portfolio, Layout, PostCard, PostDetails, PostHeader };

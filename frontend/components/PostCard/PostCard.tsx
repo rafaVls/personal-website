@@ -1,6 +1,6 @@
 import { Post } from "../../common/types";
 import Link from "next/link";
-import { PostDetails } from "../index";
+import { PostDetails, PostHeader } from "../index";
 import styles from "./PostCard.module.css";
 
 interface Props {
@@ -27,8 +27,7 @@ export default function PostCard({ post }: Props): JSX.Element {
 			<div className={styles.postDetails}>
 				<Link href={`/posts/${slug}`}>
 					<a>
-						<h3>{title}</h3>
-						<p>{excerpt}</p>
+						<PostHeader card title={title} excerpt={excerpt} />
 					</a>
 				</Link>
 				<PostDetails published_at={published_at} reading_time={reading_time} />
