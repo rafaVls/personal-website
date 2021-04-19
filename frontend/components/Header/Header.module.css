@@ -7,13 +7,23 @@
     background-color: white;
     z-index: 10;
 
-    min-height: 8em;
+    height: 8em;
+    min-height: 6em;
     /* 1em top is for the margin that no longer applies due to it being fixed */
     padding: 1em 3em 0 3em;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    transition: 
+        box-shadow 200ms ease-out,
+        height 200ms ease-out;
+}
+
+html:not([data-scroll="0"]) .container {
+    height: 6em;
+    box-shadow: 0 5px 15px black;
 }
 
 .container h1 {
