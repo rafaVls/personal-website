@@ -4,6 +4,7 @@ import { Post } from "../../common/types";
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { Element } from "domhandler/lib/node";
 import { server } from "../../config";
+import styles from "../../styles/BlogPost.module.css";
 
 interface Props {
 	post?: Post;
@@ -31,7 +32,7 @@ export default function BlogPost({ post }: Props): JSX.Element {
 	const postContent = parse(post.html, options);
 
 	return (
-		<article>
+		<article className={styles.article}>
 			<header>
 				<Link href={`/tag/${post.primary_tag.slug}`}>
 					<a>{post.primary_tag.name}</a>
@@ -65,7 +66,7 @@ export default function BlogPost({ post }: Props): JSX.Element {
 			</header>
 			<section>
 				{post.feature_image && (
-					<img src={post.feature_image} alt={post.title} />
+					<img src={post.feature_image} alt={post.title} id="featureImage" />
 				)}
 				{postContent}
 			</section>
