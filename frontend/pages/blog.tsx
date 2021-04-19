@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import { Post } from "../common/types";
 import { getPosts } from "../utils/helpers";
 import { PostCard } from "../components/index";
@@ -9,6 +10,12 @@ interface Props {
 }
 
 export default function Blog({ posts }: Props): JSX.Element {
+	const postCards = posts.map((post, index) => (
+		<li key={index}>
+			<PostCard post={post} />
+		</li>
+	));
+
 	return (
 		<>
 			<span className={styles.container}>
@@ -24,15 +31,10 @@ export default function Blog({ posts }: Props): JSX.Element {
 				</h2>
 			</span>
 
-			<a href="/tags">Browse by tags</a>
-
-			<ul className={styles.postCards}>
-				{posts.map((post, index) => (
-					<li key={index}>
-						<PostCard post={post} />
-					</li>
-				))}
-			</ul>
+			<Link href="/tags">
+				<a>Browse by tags</a>
+			</Link>
+			<ul className={styles.postCards}>{postCards}</ul>
 		</>
 	);
 }
