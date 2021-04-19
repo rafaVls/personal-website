@@ -1,23 +1,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
+import { debounce, storeScroll } from "../../utils/helpers";
 import styles from "./Header.module.css";
-
-const debounce = fn => {
-	let frame;
-	return (...params) => {
-		if (frame) {
-			cancelAnimationFrame(frame);
-		}
-
-		frame = requestAnimationFrame(() => {
-			fn(...params);
-		});
-	};
-};
-
-const storeScroll = (): void => {
-	document.documentElement.dataset.scroll = window.scrollY.toString();
-};
 
 export default function Header(): JSX.Element {
 	useEffect(() => {
