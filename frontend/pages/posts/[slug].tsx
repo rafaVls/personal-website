@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
+import { PostDetails } from "../../components/index";
 import { Post } from "../../common/types";
 import parse, { HTMLReactParserOptions, domToReact } from "html-react-parser";
 import { Element } from "domhandler/lib/node";
@@ -57,10 +58,10 @@ export default function BlogPost({ post }: Props): JSX.Element {
 								<strong>{post.primary_author.name}</strong>
 							</a>
 						</Link>
-						<p>
-							{post.published_at} <strong> · </strong> {post.reading_time}{" "}
-							minute read
-						</p>
+						<PostDetails
+							published_at={post.published_at}
+							reading_time={post.reading_time}
+						/>
 					</div>
 				</section>
 			</header>
