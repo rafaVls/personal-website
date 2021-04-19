@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./Header.module.css";
 
 export default function Header(): JSX.Element {
@@ -16,10 +17,12 @@ export default function Header(): JSX.Element {
 							<a href="/#about">About</a>
 						</li>
 						<li>
-							<a href="/blog">Blog</a>
+							<a href="/#portfolio">Portfolio</a>
 						</li>
 						<li>
-							<a href="/#portfolio">Portfolio</a>
+							<Link href="/blog">
+								<a>Blog</a>
+							</Link>
 						</li>
 					</ul>
 				</nav>

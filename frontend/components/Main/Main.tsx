@@ -13,12 +13,12 @@ function textSequence(
 		"Web Developer"
 	];
 
-	if (professions.length > i) {
+	if (professions.length > i && elementCurrent) {
 		setTimeout(() => {
 			elementCurrent.dataset.after = professions[i];
 			textSequence(++i, textElement);
 		}, 4250);
-	} else if (professions.length === i) {
+	} else if (professions.length === i && elementCurrent) {
 		textSequence(0, textElement);
 	}
 }
