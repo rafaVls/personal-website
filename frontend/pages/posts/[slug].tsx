@@ -11,24 +11,25 @@ interface Props {
 	post: Post;
 }
 
-//! parse does NOT sanitize html. I gotta use a sanitizer later on the server side for this.
-export default function BlogPost({ post }: Props): JSX.Element {
-	const options: HTMLReactParserOptions = {
-		replace: ({ tagName, children }: Element) => {
-			if (tagName && /h[1-2]/.test(tagName)) {
-				switch (tagName) {
-					case "h1":
-						return <h2>{domToReact(children, options)}</h2>;
+const options: HTMLReactParserOptions = {
+	replace: ({ tagName, children }: Element) => {
+		if (tagName && /h[1-2]/.test(tagName)) {
+			switch (tagName) {
+				case "h1":
+					return <h2>{domToReact(children, options)}</h2>;
 
-					case "h2":
-						return <h3>{domToReact(children, options)}</h3>;
+				case "h2":
+					return <h3>{domToReact(children, options)}</h3>;
 
-					default:
-						break;
-				}
+				default:
+					break;
 			}
 		}
-	};
+	}
+};
+
+//! parse does NOT sanitize html. I gotta use a sanitizer later on the server side for this.
+export default function BlogPost({ post }: Props): JSX.Element {
 	const postContent = parse(post.html, options);
 
 	return (
