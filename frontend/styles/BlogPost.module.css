@@ -86,7 +86,8 @@
     line-height: 1.6;
 }
 
-.article > section > p + p{
+.article > section > p + p, 
+.article > section > *:not(h1, h2, h3) + p {
     margin-top: 1em;
 }
 
