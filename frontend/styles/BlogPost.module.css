@@ -1,13 +1,18 @@
 .article {
-    width: clamp(40ch, 85ch, 90ch);
+    width: clamp(40ch, 120ch, 100%);
     margin: 10em auto 0 auto;
+    padding: 2em;
     font-family: var(--font-primary);
+    color: var(--text-primary);
+    background-color: var(--article-bg-color);
+    border-radius: 20px;
 
     --tag-headerp-size: clamp(1.5rem, 1.25vw, 3.5rem);
     --title-size: clamp(3rem, 4.75vw, 6rem);
     --h3-size: clamp(2rem, 2vw, 15rem);
     --article-text-size: clamp(1.5rem, 1.5vw, 4.5rem);
     --code-font-size: clamp(1.25rem, 1vw, 2rem);
+    --code-bg-color: rgb(43, 42, 42);
 }
 
 .article h2 {
@@ -33,8 +38,11 @@
 }
 
 .article img[id="profileImage"] {
-    max-width: 50px;
-    margin-right: 0.5em;
+    width: 3em;
+    height: 3em;
+    object-fit: cover;
+    object-position: -25px;
+    margin-right: 3em;
     
     border-radius: 50%;
 }
@@ -98,7 +106,7 @@
     padding: 1em 0 1em 1em;
     font-size: var(--code-font-size);
     color: beige;
-    background-color: #222;
+    background-color: var(--code-bg-color);
 }
 
 @media only screen and (min-width: 1440px) {

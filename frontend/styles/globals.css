@@ -7,12 +7,15 @@
 
     /* Colors */
     --text-primary: black;
-    --text-accent: red;
+    --text-accent: black;
+    --bg-color: white;
+    --article-bg-color: white;
 }
 
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    background-color: var(--bg-color);
 }
 
 body {
