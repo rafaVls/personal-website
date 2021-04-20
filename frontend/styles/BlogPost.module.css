@@ -87,7 +87,7 @@
 }
 
 .article > section > p + p, 
-.article > section > *:not(h1, h2, h3) + p {
+.article > section > *:not(h1, h2, h3) + * {
     margin-top: 1em;
 }
 
