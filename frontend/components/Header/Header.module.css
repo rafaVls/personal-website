@@ -4,14 +4,14 @@
     left: 0;
     /* 8em to account for the margins */
     width: 100%;
-    background-color: white;
-    z-index: 10;
-
     height: 8em;
     min-height: 6em;
+    z-index: 10;
+    
     /* 1em top is for the margin that no longer applies due to it being fixed */
     padding: 1em 3em 0 3em;
-
+    background-color: var(--bg-color);
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
