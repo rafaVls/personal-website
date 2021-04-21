@@ -44,6 +44,16 @@ const options: HTMLReactParserOptions = {
 					attribs.class.includes("kg-bookmark-description"))
 			) {
 				return <p>{domToReact(children, options)}</p>;
+			} else if (
+				attribs.class &&
+				tagName === "figure" &&
+				attribs.class.includes("kg-gallery-card")
+			) {
+				return (
+					<figure className={styles.gallery}>
+						{domToReact(children, options)}
+					</figure>
+				);
 			}
 
 			// Removing unnecessary classes and ids
