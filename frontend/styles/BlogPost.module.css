@@ -37,7 +37,8 @@
     max-width: 100%;
 }
 
-.article p > code {
+.article p > code,
+.article > section *:not(pre) code {
     padding: 0.25em;
     font-size: var(--code-font-size);
     color: beige;
