@@ -12,17 +12,36 @@ interface Props {
 }
 
 const options: HTMLReactParserOptions = {
-	replace: ({ tagName, children }: Element) => {
-		if (tagName && /h[1-2]/.test(tagName)) {
-			switch (tagName) {
-				case "h1":
-					return <h2>{domToReact(children, options)}</h2>;
+	replace: ({ tagName, children, attribs }: Element) => {
+		if (tagName) {
+			if (/h[1-2]/.test(tagName)) {
+				switch (tagName) {
+					case "h1":
+						return <h2>{domToReact(children, options)}</h2>;
 
-				case "h2":
-					return <h3>{domToReact(children, options)}</h3>;
+					case "h2":
+						return <h3>{domToReact(children, options)}</h3>;
 
-				default:
-					break;
+					default:
+						break;
+				}
+			} else if (
+				attribs.class &&
+				tagName === "figure" &&
+				attribs.class.includes("kg-bookmark-card")
+			) {
+				return (
+					<figure className={styles.urlBookmark}>
+						{domToReact(children, options)}
+					</figure>
+				);
+			} else if (
+				attribs.class &&
+				tagName === "div" &&
+				(attribs.class.includes("kg-bookmark-title") ||
+					attribs.class.includes("kg-bookmark-description"))
+			) {
+				return <p>{domToReact(children, options)}</p>;
 			}
 		}
 	}
