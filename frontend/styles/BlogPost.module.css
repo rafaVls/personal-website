@@ -110,16 +110,18 @@
     text-underline-offset: 0.25em;
 }
 
+.article > section > blockquote {
+    padding: 0 1.5em;
+    line-height: 1.6;
+    font-weight: 500;
+    border-left: 3px solid black;
+}
+
 .article > section li {
     list-style: disc;
     margin-bottom: 0.5em;
     line-height: 1.6;
 }
-
-/* .article > section > figure {
-    display: flex;
-    flex-direction: column;
-} */
 
 .article > section:not(h3) {
     font-size: var(--article-text-size);
@@ -195,7 +197,6 @@
 .urlBookmark > a > div + div {
     position: relative;
     min-width: 33%;
-    /* max-height: 100%; */
 }
 
 .urlBookmark > a > div + div > img {
