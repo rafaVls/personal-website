@@ -71,7 +71,13 @@
     font-style: italic;
 }
 
-.article > header > a {
+.article > header > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.article > header > div > a {
     font-family: var(--font-accent);
     font-size: var(--tag-headerp-size);
 }

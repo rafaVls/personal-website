@@ -66,13 +66,16 @@ const options: HTMLReactParserOptions = {
 //! parse does NOT sanitize html. I gotta use a sanitizer later on the server side for this.
 export default function BlogPost({ post }: Props): JSX.Element {
 	const postContent = parse(post.html, options);
+	const tags = post.tags.map((tag, index) => (
+		<Link href={`/tag/${tag.slug}`} key={index}>
+			<a>#{tag.name}</a>
+		</Link>
+	));
 
 	return (
 		<article className={styles.article}>
 			<header>
-				<Link href={`/tag/${post.primary_tag.slug}`}>
-					<a>{post.primary_tag.name}</a>
-				</Link>
+				<div>{tags}</div>
 				<PostHeader title={post.title} excerpt={post.excerpt} post={post} />
 			</header>
 			<section>
