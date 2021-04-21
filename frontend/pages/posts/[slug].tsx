@@ -42,7 +42,9 @@ export default function BlogPost({ post }: Props): JSX.Element {
 			</header>
 			<section>
 				{post.feature_image && (
-					<img src={post.feature_image} alt={post.title} id="featureImage" />
+					<figure id="featureFigure">
+						<img src={post.feature_image} alt={post.title} />
+					</figure>
 				)}
 				{postContent}
 			</section>

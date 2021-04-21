@@ -1,6 +1,6 @@
 .article {
     width: clamp(40ch, 100ch, 100%);
-    margin: 10em auto 0 auto;
+    margin: 0 auto;
     padding: 2em;
     font-family: var(--font-primary);
     color: var(--text-primary);
@@ -47,9 +47,13 @@
     border-radius: 50%;
 }
 
-.article img[id="featureImage"] {
-    margin: 1em auto 0.5em auto;
-    width: 100%;
+.article figure[id="featureFigure"] {
+    margin: 1em -5vw 0.5em;
+}
+
+.article figure[id="featureFigure"] > img {
+    max-height: 420px;
+    object-fit: cover;
 }
 
 .article :is(em, i) {
@@ -134,5 +138,11 @@
 @media only screen and (min-width: 1440px) {
     .article {
         width: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .article {
+        padding: 0;
     }
 }
