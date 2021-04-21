@@ -49,9 +49,13 @@
 
 .article figure[id="featureFigure"] {
     margin: 1em -5vw 0.5em;
+    display: flex;
+    align-items: center;
 }
 
 .article figure[id="featureFigure"] > img {
+    max-width: 1040px;
+    width: 100%;
     max-height: 420px;
     object-fit: cover;
 }
