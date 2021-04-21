@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const GhostContentAPI = require("@tryghost/content-api");
+const sanitizeHtml = require("sanitize-html");
 import { Post } from "./types/ghost";
 import { formatDate } from "./utils/helpers";
 import express from "express";
@@ -49,6 +50,15 @@ app.get("/post/:slug", async (req, res) => {
 			});
 
 			post.published_at = formatDate(post.published_at);
+			post.html = sanitizeHtml(post.html, {
+				allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+				allowedAttributes: {
+					a: ["href", "name", "target"],
+					figure: ["class"],
+					div: ["class"],
+					img: ["src", "alt"]
+				}
+			});
 
 			res.status(200).json({
 				success: true,

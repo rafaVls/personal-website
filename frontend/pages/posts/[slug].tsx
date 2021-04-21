@@ -12,7 +12,6 @@ interface Props {
 }
 
 export default function BlogPost({ post }: Props): JSX.Element {
-	//! parse does NOT sanitize html. I gotta use a sanitizer later on the server side for this.
 	const postContent = parse(post.html, options);
 	const tags = post.tags.map((tag, index) => (
 		<Link href={`/tag/${tag.slug}`} key={index}>
