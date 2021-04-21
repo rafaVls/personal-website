@@ -10,6 +10,8 @@ function replace(domNode: Element): false | void | JSX.Element {
 	if (domNode instanceof Element && domNode.tagName) {
 		const { tagName, attribs, children } = domNode;
 
+		// Because the header tag already has an h1,
+		// replace any h1 tags to h2, and any h2 tags to h3
 		if (/h[1-2]/.test(tagName)) {
 			switch (tagName) {
 				case "h1":
@@ -21,33 +23,35 @@ function replace(domNode: Element): false | void | JSX.Element {
 				default:
 					break;
 			}
-		} else if (
-			attribs.class &&
-			tagName === "figure" &&
-			attribs.class.includes("kg-bookmark-card")
-		) {
-			return (
-				<figure className={styles.urlBookmark}>
-					{domToReact(children, options)}
-				</figure>
-			);
-		} else if (
-			attribs.class &&
-			tagName === "div" &&
-			(attribs.class.includes("kg-bookmark-title") ||
-				attribs.class.includes("kg-bookmark-description"))
-		) {
-			return <p>{domToReact(children, options)}</p>;
-		} else if (
-			attribs.class &&
-			tagName === "figure" &&
-			attribs.class.includes("kg-gallery-card")
-		) {
-			return (
-				<figure className={styles.gallery}>
-					{domToReact(children, options)}
-				</figure>
-			);
+		}
+
+		if (attribs.class) {
+			const classes = attribs.class;
+
+			if (tagName === "figure") {
+				// kg-bookmark-card is how Ghost calls the url bookmarks,
+				// which contains a bookmark-title and bookmark-description
+				// kg-gallery-card is how they call their image galleries
+				if (classes.includes("kg-bookmark-card")) {
+					return (
+						<figure className={styles.urlBookmark}>
+							{domToReact(children, options)}
+						</figure>
+					);
+				} else if (classes.includes("kg-gallery-card")) {
+					return (
+						<figure className={styles.gallery}>
+							{domToReact(children, options)}
+						</figure>
+					);
+				}
+			} else if (
+				tagName === "div" &&
+				(classes.includes("kg-bookmark-title") ||
+					classes.includes("kg-bookmark-description"))
+			) {
+				return <p>{domToReact(children, options)}</p>;
+			}
 		}
 
 		// Removing unnecessary classes and ids
