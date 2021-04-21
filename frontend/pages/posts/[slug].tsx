@@ -12,8 +12,10 @@ interface Props {
 }
 
 const options: HTMLReactParserOptions = {
-	replace: ({ tagName, children, attribs }: Element) => {
-		if (tagName) {
+	replace: domNode => {
+		if (domNode instanceof Element && domNode.tagName) {
+			const { tagName, attribs, children } = domNode;
+
 			if (/h[1-2]/.test(tagName)) {
 				switch (tagName) {
 					case "h1":
@@ -43,6 +45,10 @@ const options: HTMLReactParserOptions = {
 			) {
 				return <p>{domToReact(children, options)}</p>;
 			}
+
+			// Removing unnecessary classes and ids
+			attribs.class = null;
+			attribs.id = null;
 		}
 	}
 };
