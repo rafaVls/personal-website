@@ -20,20 +20,22 @@ export default function BlogPost({ post }: Props): JSX.Element {
 	));
 
 	return (
-		<article className={styles.article}>
-			<header>
-				<div>{tags}</div>
-				<PostHeader title={post.title} excerpt={post.excerpt} post={post} />
-			</header>
-			<section>
-				{post.feature_image && (
-					<figure id="featureFigure">
-						<img src={post.feature_image} alt={post.title} />
-					</figure>
-				)}
-				{postContent}
-			</section>
-		</article>
+		<main>
+			<article className={styles.article}>
+				<header>
+					<div>{tags}</div>
+					<PostHeader title={post.title} excerpt={post.excerpt} post={post} />
+				</header>
+				<section>
+					{post.feature_image && (
+						<figure id="featureFigure">
+							<img src={post.feature_image} alt={post.title} />
+						</figure>
+					)}
+					{postContent}
+				</section>
+			</article>
+		</main>
 	);
 }
 

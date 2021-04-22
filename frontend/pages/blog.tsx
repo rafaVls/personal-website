@@ -17,14 +17,14 @@ export default function Blog({ posts }: Props): JSX.Element {
 	));
 
 	return (
-		<>
+		<main>
 			<BlogHeader />
 
 			<Link href="/tags">
 				<a className={styles.browseTags}>Browse by tags</a>
 			</Link>
 			<ul className={styles.postCards}>{postCards}</ul>
-		</>
+		</main>
 	);
 }
 
