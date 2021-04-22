@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import { Post } from "../common/types";
 import { getPosts } from "../utils/helpers";
-import { PostCard } from "../components/index";
+import { PostCard, BlogHeader } from "../components/index";
 import styles from "../styles/Blog.module.css";
 
 interface Props {
@@ -18,21 +18,10 @@ export default function Blog({ posts }: Props): JSX.Element {
 
 	return (
 		<>
-			<span className={styles.container}>
-				<h2>
-					A blog by{" "}
-					<a
-						href="https://www.twitter.com/RafaelAvls"
-						target="_blank"
-						rel="noreferrer"
-					>
-						Rafael Avilés
-					</a>
-				</h2>
-			</span>
+			<BlogHeader />
 
 			<Link href="/tags">
-				<a>Browse by tags</a>
+				<a className={styles.browseTags}>Browse by tags</a>
 			</Link>
 			<ul className={styles.postCards}>{postCards}</ul>
 		</>
