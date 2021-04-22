@@ -12,6 +12,7 @@
     font-weight: 500;
     text-transform: capitalize;
 
+    padding-top: 2.5em;
     margin-bottom: 0.5em;
 }
 
@@ -32,8 +33,4 @@
     text-decoration: 2px underline;
     text-underline-offset: 0.05em;
     text-transform: capitalize;
-}
-
-.article > ul > li:last-of-type {
-    margin-bottom: 4em;
 }

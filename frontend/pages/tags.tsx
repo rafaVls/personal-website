@@ -12,7 +12,7 @@ interface Props {
 export default function Tags({ tags }: Props): JSX.Element {
 	const tagsContent = tags.map((tag, i) => (
 		<Fragment key={i}>
-			<h2>{tag.name}</h2>
+			<h2 id={tag.slug}>{tag.name}</h2>
 			<ul>
 				{tag.posts.map((post, j) => (
 					<li key={j}>
@@ -25,7 +25,11 @@ export default function Tags({ tags }: Props): JSX.Element {
 		</Fragment>
 	));
 
-	return <article className={styles.article}>{tagsContent}</article>;
+	return (
+		<main>
+			<article className={styles.article}>{tagsContent}</article>
+		</main>
+	);
 }
 
 export const getStaticProps: GetStaticProps = async () => {
