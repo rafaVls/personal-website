@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import { Tag } from "../common/types";
-import { server } from "../config";
+import { getTags } from "../utils/helpers";
 
 interface Props {
 	tags: Tag[];
@@ -11,8 +11,7 @@ export default function Tags({ tags }: Props): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const res = await fetch(`${server}/tags`);
-	const tags: Tag[] = await res.json();
+	const tags: Tag[] = await getTags();
 
 	return {
 		props: { tags }
