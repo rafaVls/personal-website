@@ -6,7 +6,7 @@
     background-color: var(--article-bg-color);
 }
 
-.article > h2 {
+.article > h3 {
     font-family: var(--font-accent);
     font-size: clamp(2rem, 3vw, 5rem);
     font-weight: 500;
@@ -16,7 +16,7 @@
     margin-bottom: 0.5em;
 }
 
-.article > h2::before {
+.article > h3::before {
     content: "#";
     color: var(--text-accent);
 }
