@@ -35,6 +35,7 @@ export interface Tag {
 	feature_image: string | null;
 	meta_title: string | null;
 	meta_description: string | null;
+	posts?: Post[];
 }
 
 interface Author {
