@@ -4,7 +4,7 @@
 	"description": "A personal website showcasing who I am and what I can do. It contains a section with the projects I've made and a personal blog.",
 	"main": "server.ts",
 	"scripts": {
-		"start": "node server.ts",
+		"start": "node --loader ts-node/esm server.ts",
 		"server": "nodemon server.ts"
 	},
 	"keywords": [
