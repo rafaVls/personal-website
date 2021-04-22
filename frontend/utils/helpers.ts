@@ -1,5 +1,5 @@
 import { server } from "../config";
-import { Post } from "../common/types";
+import { Post, Tag } from "../common/types";
 
 export async function getPosts(): Promise<Post[]> {
 	interface Posts {
@@ -17,6 +17,17 @@ export async function getPost(slug: string | string[]): Promise<Post> {
 	const { post }: { post: Post } = await res.json();
 
 	return post;
+}
+
+export async function getTags(): Promise<Tag[]> {
+	interface Tags {
+		tags: Tag[];
+	}
+
+	const res = await fetch(`${server}/tags`);
+	const { tags }: Tags = await res.json();
+
+	return tags;
 }
 
 export const debounce = (fn: (...params: never[]) => void): (() => void) => {
