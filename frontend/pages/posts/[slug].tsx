@@ -14,7 +14,7 @@ interface Props {
 export default function BlogPost({ post }: Props): JSX.Element {
 	const postContent = parse(post.html, options);
 	const tags = post.tags.map((tag, index) => (
-		<Link href={`/tag/${tag.slug}`} key={index}>
+		<Link href={`/tags#${tag.slug}`} key={index}>
 			<a>#{tag.name}</a>
 		</Link>
 	));
