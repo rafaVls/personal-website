@@ -27,7 +27,7 @@ export interface Post {
 	email_subject: string | null;
 }
 
-interface Tag {
+export interface Tag {
 	id: string;
 	name: string;
 	slug: string;
