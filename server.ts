@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const GhostContentAPI = require("@tryghost/content-api");
 const sanitizeHtml = require("sanitize-html");
-import { Post } from "./types/ghost";
+import { Post, Tag } from "./types/ghost";
 import { formatDate } from "./utils/helpers";
 import express from "express";
 const app = express();
@@ -74,6 +74,33 @@ app.get("/post/:slug", async (req, res) => {
 		res.status(500).json({
 			success: false,
 			message: "Validation (slugFormat) failed for slug."
+		});
+	}
+});
+
+app.get("/tags", async (req, res) => {
+	try {
+		const tags: Tag[] = await api.tags.browse();
+		const posts: Post[] = await api.posts.browse({ include: "tags" });
+
+		tags.forEach(tag => {
+			tag.posts = posts.filter(post => {
+				for (const postTag of post.tags) {
+					if (postTag.id === tag.id) {
+						return true;
+					}
+				}
+			});
+		});
+
+		res.status(200).json({
+			success: true,
+			tags
+		});
+	} catch (err) {
+		res.status(500).json({
+			success: false,
+			message: err.message
 		});
 	}
 });
