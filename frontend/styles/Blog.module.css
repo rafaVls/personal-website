@@ -1,4 +1,4 @@
-.container {
+/* .container {
     padding: 2em 0;
     margin-bottom: 2em;
 
@@ -7,7 +7,6 @@
 }
 
 .container > h2 {
-
     font-family: var(--font-accent);
     font-size: clamp(1.25rem, 2vw, 4rem);
     font-weight: 500;
@@ -40,9 +39,9 @@
 .container > h2 > a {
     text-decoration: underline;
     text-underline-offset: 0.05em;
-}
+} */
 
-.container ~ a {
+.browseTags {
     padding: .5em 1em;
 
     cursor: pointer;

@@ -21,7 +21,11 @@ export default function PostCard({ post }: Props): JSX.Element {
 		<>
 			<Link href={`/posts/${slug}`}>
 				<a>
-					<img src={feature_image} alt="" className={styles.featureImage} />
+					<img
+						src={feature_image}
+						alt={title}
+						className={styles.featureImage}
+					/>
 				</a>
 			</Link>
 			<div className={styles.postDetails}>
