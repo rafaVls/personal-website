@@ -114,7 +114,7 @@
 
 .article > section a {
     text-decoration: underline;
-    text-underline-offset: 0.25em;
+    text-underline-offset: 0.05em;
 }
 
 .article > section > blockquote {
