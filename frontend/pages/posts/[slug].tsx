@@ -1,8 +1,9 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
+import Head from "next/head";
 import { PostHeader } from "../../components/index";
 import { Post } from "../../common/types";
-import { getPosts, getPost } from "../../utils/helpers";
+import { getPosts, getPost, capitalize } from "../../utils/helpers";
 import parse from "html-react-parser";
 import options from "../../utils/htmlParser";
 import styles from "../../styles/BlogPost.module.css";
@@ -20,22 +21,28 @@ export default function BlogPost({ post }: Props): JSX.Element {
 	));
 
 	return (
-		<main>
-			<article className={styles.article}>
-				<header>
-					<div>{tags}</div>
-					<PostHeader title={post.title} excerpt={post.excerpt} post={post} />
-				</header>
-				<section>
-					{post.feature_image && (
-						<figure id="featureFigure">
-							<img src={post.feature_image} alt={post.title} />
-						</figure>
-					)}
-					{postContent}
-				</section>
-			</article>
-		</main>
+		<>
+			<Head>
+				<meta name="description" content={post.excerpt} />
+				<title>{capitalize(post.title)} | A Blog by Rafael Avilés</title>
+			</Head>
+			<main>
+				<article className={styles.article}>
+					<header>
+						<div>{tags}</div>
+						<PostHeader title={post.title} excerpt={post.excerpt} post={post} />
+					</header>
+					<section>
+						{post.feature_image && (
+							<figure id="featureFigure">
+								<img src={post.feature_image} alt={post.title} />
+							</figure>
+						)}
+						{postContent}
+					</section>
+				</article>
+			</main>
+		</>
 	);
 }
 

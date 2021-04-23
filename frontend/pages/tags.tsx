@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
+import Head from "next/head";
 import { Fragment } from "react";
 import { Tag } from "../common/types";
 import { getTags } from "../utils/helpers";
@@ -27,10 +28,19 @@ export default function Tags({ tags }: Props): JSX.Element {
 	));
 
 	return (
-		<main>
-			<BlogHeader />
-			<article className={styles.article}>{tagsContent}</article>
-		</main>
+		<>
+			<Head>
+				<meta
+					name="description"
+					content="A blog where you can read about HTML, CSS, JavaScript, React, Nodejs, and anything related to Web Development and Software Development in general."
+				/>
+				<title>Tags | Technical Blog - A Blog by Rafael Avilés</title>
+			</Head>
+			<main>
+				<BlogHeader />
+				<article className={styles.article}>{tagsContent}</article>
+			</main>
+		</>
 	);
 }
 
