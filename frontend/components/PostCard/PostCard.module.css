@@ -12,6 +12,7 @@
 .postDetails h3 {
     font-family: var(--font-primary);
     font-size: clamp(1.5rem, 2vw, 4rem);
+    text-transform: capitalize;
 }
 
 .postDetails > a p {
