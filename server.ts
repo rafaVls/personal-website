@@ -56,7 +56,8 @@ app.get("/post/:slug", async (req, res) => {
 					a: ["href", "name", "target"],
 					figure: ["class"],
 					div: ["class"],
-					img: ["src", "alt"]
+					img: ["src", "alt"],
+					code: ["class"]
 				}
 			});
 

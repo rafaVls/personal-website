@@ -6,6 +6,7 @@ import BlogHeader from "./BlogHeader/BlogHeader";
 import PostCard from "./PostCard/PostCard";
 import PostDetails from "./PostDetails/PostDetails";
 import PostHeader from "./PostHeader/PostHeader";
+import Highlight from "./Highlight/Highlight";
 
 export {
 	About,
@@ -15,5 +16,6 @@ export {
 	BlogHeader,
 	PostCard,
 	PostDetails,
-	PostHeader
+	PostHeader,
+	Highlight
 };

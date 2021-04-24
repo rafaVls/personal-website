@@ -19,6 +19,7 @@
   "author": "Rafael Avilés",
   "license": "MIT",
   "dependencies": {
+    "highlight.js": "^10.7.2",
     "html-react-parser": "^1.2.5",
     "next": "^10.1.3",
     "react": "^17.0.2",
