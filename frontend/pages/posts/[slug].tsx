@@ -25,6 +25,10 @@ export default function BlogPost({ post }: Props): JSX.Element {
 			<Head>
 				<meta name="description" content={post.excerpt} />
 				<title>{capitalize(post.title)} | A Blog by Rafael Avilés</title>
+				<link
+					rel="stylesheet"
+					href="https://highlightjs.org/static/demo/styles/a11y-dark.css"
+				/>
 			</Head>
 			<main>
 				<article className={styles.article}>
