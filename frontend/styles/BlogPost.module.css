@@ -11,7 +11,7 @@
     --title-size: clamp(3rem, 4.75vw, 6rem);
     --h3-size: clamp(2rem, 2vw, 15rem);
     --article-text-size: clamp(1.5rem, 1.5vw, 4.5rem);
-    --code-font-size: clamp(1.25rem, 1vw, 2rem);
+    --code-font-size: clamp(1rem, 0.75vw, 2rem);
     --code-bg-color: rgb(43, 42, 42);
 }
 
@@ -149,7 +149,7 @@
 }
 
 .article > section > pre {
-    padding: 1em 0 1em 1em;
+    padding: 1em;
     font-size: var(--code-font-size);
     color: beige;
     background-color: var(--code-bg-color);
