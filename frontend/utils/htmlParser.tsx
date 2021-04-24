@@ -1,5 +1,6 @@
 import { domToReact } from "html-react-parser";
 import { Element } from "domhandler/lib/node";
+import { Highlight } from "../components/index";
 import styles from "../styles/BlogPost.module.css";
 
 const options = {
@@ -51,6 +52,14 @@ function replace(domNode: Element): false | void | JSX.Element {
 					classes.includes("kg-bookmark-description"))
 			) {
 				return <p>{domToReact(children, options)}</p>;
+			} else if (tagName === "code" && classes.includes("language")) {
+				const language = classes.split("-")[1];
+
+				return (
+					<Highlight language={language}>
+						{domToReact(children, options)}
+					</Highlight>
+				);
 			}
 		}
 
