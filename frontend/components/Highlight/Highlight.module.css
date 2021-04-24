@@ -1,0 +1,22 @@
+.copyButton {
+    margin-left: calc(100% - 5em);
+    margin-bottom: 0.5em;
+    padding: 0.25em 1em;
+
+    min-width: 40px;
+    min-height: 1em;
+
+    font-size: 0.8rem;
+    color: hsl(160, 100%, 75%);
+    
+    border-radius: 15px;
+    border: 2px solid hsl(160, 100%, 75%);
+    background-color: hsl(0, 0%, 17%);
+}
+
+.copyButton:active {
+    color: hsl(160, 100%, 75%);
+
+    border: 2px solid hsl(160, 100%, 75%);
+    background-color: hsl(0, 100%, 15%);
+}
