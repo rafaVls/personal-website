@@ -47,4 +47,5 @@
 .card > div > a > img {
     width: 2em;
     cursor: pointer;
+    filter: invert(var(--img-invert));
 }

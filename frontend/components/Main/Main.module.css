@@ -10,6 +10,7 @@
     grid-template-rows: 85% 15%;
     align-items: center;
     justify-items: center;
+    color: var(--text-primary);
 }
 
 .main p {
@@ -32,7 +33,7 @@
 
 .typewriter {
     overflow: hidden;
-    border-right: .15em solid #222;
+    border-right: .15em solid var(--text-primary);
     padding-right: .25em;
     white-space: nowrap;
 
@@ -50,7 +51,7 @@
 
 @keyframes blinkCaret {
     from, to {border-color: transparent}
-    50% {border-color: #222;}
+    50% {border-color: initial;}
 }
 
 .bigText {

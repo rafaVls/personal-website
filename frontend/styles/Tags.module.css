@@ -3,7 +3,7 @@
     margin: 0 auto;
     padding: 1em;
 
-    background-color: var(--article-bg-color);
+    background-color: var(--bg-color);
 }
 
 .article > h3 {
@@ -14,11 +14,12 @@
 
     padding-top: 2.5em;
     margin-bottom: 0.5em;
+    color: var(--text-primary);
 }
 
 .article > h3::before {
     content: "#";
-    color: var(--text-accent);
+    color: var(--text-primary);
 }
 
 .article li {
@@ -28,6 +29,7 @@
 
     font-family: var(--font-primary);
     font-size: clamp(1.5rem, 1.5vw, 3rem);
+    color: var(--text-primary);
     line-height: 1.6;
 
     text-decoration: 2px underline;

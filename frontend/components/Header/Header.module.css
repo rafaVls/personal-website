@@ -10,7 +10,7 @@
     
     /* 1em top is for the margin that no longer applies due to it being fixed */
     padding: 0 3em;
-    background-color: var(--bg-color);
+    background-color: var(--footer-header-bg-color);
     
     display: flex;
     justify-content: space-between;
@@ -29,6 +29,8 @@ html:not([data-scroll="0"]) .container {
 .container h1 {
     font-family: var(--font-accent);
     font-size: clamp(1.75rem, 2vw, 5rem);
+    font-weight: 500;
+    color: var(--text-accent);
 }
 
 .navBar {
@@ -43,6 +45,7 @@ html:not([data-scroll="0"]) .container {
 .navList li a {
     font-family: var(--font-accent);
     font-size: clamp(1.25rem, 1.5vw, 3rem);
+    color: white;
 }
 
 @media only screen and (max-width: 700px) {

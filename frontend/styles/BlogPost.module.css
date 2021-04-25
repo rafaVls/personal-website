@@ -1,11 +1,10 @@
 .article {
-    width: clamp(40ch, 100ch, 100%);
+    width: clamp(40ch, 110ch, 100%);
     margin: 0 auto;
     padding: 2em;
     font-family: var(--font-primary);
     color: var(--text-primary);
-    background-color: var(--article-bg-color);
-    border-radius: 20px;
+    background-color: var(--bg-color);
 
     --tag-headerp-size: clamp(1.5rem, 1.25vw, 3.5rem);
     --title-size: clamp(3rem, 4.75vw, 6rem);
@@ -116,6 +115,7 @@
 .article > section a {
     text-decoration: underline;
     text-underline-offset: 0.05em;
+    color: var(--text-accent);
 }
 
 .article > section > blockquote {

@@ -6,16 +6,21 @@
     --font-accent: "Roboto Mono", monospace;
 
     /* Colors */
-    --text-primary: black;
-    --text-accent: black;
-    --bg-color: white;
-    --article-bg-color: white;
+    --text-primary: hsl(0, 0%, 0%);
+    --text-accent: hsl(252, 42%, 52%);
+    --bg-color: hsl(0, 0%, 100%);
+    --footer-header-bg-color: hsl(0, 0%, 15%);
+    --img-invert: 0%
 }
 
 html {
     font-size: 16px;
     scroll-behavior: smooth;
     background-color: var(--bg-color);
+}
+
+html:not([data-scroll="0"]) ::-webkit-scrollbar-thumb {
+        border-radius: 15px;
 }
 
 body {
@@ -45,6 +50,48 @@ a {
 
 a:hover {
     opacity: 0.7;
+}
+
+a:focus {
+    outline: 2px solid;
+    outline-offset: 3px;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 
+        0 0 0 5px,
+        0 0 0 7px;
+}
+
+::-moz-focus-inner {
+    border: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: hsl(0, 0%, 80%);
+        --text-accent: hsl(152, 80%, 63%);
+        --bg-color: hsl(0, 0%, 20%);
+        --footer-header-bg-color: hsl(0, 0%, 15%);
+        --img-invert: 100%
+    }
 }
 
 @media only screen and (max-width: 768px) {
