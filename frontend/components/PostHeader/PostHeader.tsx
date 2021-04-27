@@ -1,5 +1,4 @@
 import { Post } from "../../common/types";
-import Link from "next/link";
 import { PostDetails } from "../index";
 
 interface Props {
@@ -32,22 +31,14 @@ export default function PostHeader({
 				<p>{excerpt}</p>
 				<section>
 					<figure>
-						<Link href={`/author/${primary_author.slug}`}>
-							<a>
-								<img
-									src={primary_author.profile_image}
-									alt={primary_author.name}
-									id="profileImage"
-								/>
-							</a>
-						</Link>
+						<img
+							src={primary_author.profile_image}
+							alt={primary_author.name}
+							id="profileImage"
+						/>
 					</figure>
 					<div>
-						<Link href={`/author/${primary_author.slug}`}>
-							<a>
-								<strong>{primary_author.name}</strong>
-							</a>
-						</Link>
+						<strong>{primary_author.name}</strong>
 						<PostDetails
 							published_at={post.published_at}
 							reading_time={post.reading_time}

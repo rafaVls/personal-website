@@ -7,5 +7,5 @@
     "outDir": "dist"
   },
   "include": ["*.ts", "*/*.ts"],
-  "exclude": ["frontend/"]
+  "exclude": ["frontend/", "node_modules/"]
 }
