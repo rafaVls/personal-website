@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import GhostContentAPI from "@tryghost/content-api";
-const sanitizeHtml = require("sanitize-html");
+import sanitizeHtml from "sanitize-html";
 import { TagWithPosts } from "./types/ghost";
 import { formatDate } from "./utils/helpers";
 import express from "express";
