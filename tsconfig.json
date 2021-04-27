@@ -4,5 +4,8 @@
     "target": "ES6",
     "noImplicitAny": true,
     "moduleResolution": "Node",
-  }
+    "outDir": "dist"
+  },
+  "include": ["*.ts", "*/*.ts"],
+  "exclude": ["frontend/"]
 }
