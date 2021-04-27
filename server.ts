@@ -4,10 +4,12 @@ const sanitizeHtml = require("sanitize-html");
 import { TagWithPosts } from "./types/ghost";
 import { formatDate } from "./utils/helpers";
 import express from "express";
-const app = express();
-const dotenv = require("dotenv");
-const port = process.env.PORT || 5000;
+import dotenv from "dotenv";
+
 dotenv.config({ path: "./.env.local" });
+const app = express();
+const port = process.env.PORT || 5000;
+const environment = process.env.NODE_ENV;
 
 const api = new GhostContentAPI({
 	url: process.env.GHOST_HOST,
@@ -108,5 +110,5 @@ app.get("/tags", async (req, res) => {
 });
 
 app.listen(port, () =>
-	console.log(`App listening on http://localhost:${port}`)
+	console.log(`App running in ${environment} mode on http://localhost:${port}`)
 );
