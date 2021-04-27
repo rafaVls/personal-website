@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const GhostContentAPI = require("@tryghost/content-api");
+import GhostContentAPI from "@tryghost/content-api";
 const sanitizeHtml = require("sanitize-html");
-import { Post, Tag } from "./types/ghost";
+import { TagWithPosts } from "./types/ghost";
 import { formatDate } from "./utils/helpers";
 import express from "express";
 const app = express();
@@ -17,8 +17,8 @@ const api = new GhostContentAPI({
 
 app.get("/posts", async (req, res) => {
 	try {
-		const posts: Post[] = await api.posts.browse({
-			include: "tags,authors"
+		const posts = await api.posts.browse({
+			include: ["tags", "authors"]
 		});
 
 		posts.forEach(post => {
@@ -43,11 +43,12 @@ app.get("/post/:slug", async (req, res) => {
 
 	if (slugFormat.test(slug)) {
 		try {
-			const post: Post = await api.posts.read({
-				slug,
-				include: "tags,authors",
-				formats: ["html"]
-			});
+			const post = await api.posts.read(
+				{
+					slug
+				},
+				{ include: ["tags", "authors"], formats: "html" }
+			);
 
 			post.published_at = formatDate(post.published_at);
 			post.html = sanitizeHtml(post.html, {
@@ -81,8 +82,8 @@ app.get("/post/:slug", async (req, res) => {
 
 app.get("/tags", async (req, res) => {
 	try {
-		const tags: Tag[] = await api.tags.browse();
-		const posts: Post[] = await api.posts.browse({ include: "tags" });
+		const tags: TagWithPosts[] = await api.tags.browse();
+		const posts = await api.posts.browse({ include: "tags" });
 
 		tags.forEach(tag => {
 			tag.posts = posts.filter(post => {
