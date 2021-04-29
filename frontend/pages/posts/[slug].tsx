@@ -1,15 +1,18 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
 import Head from "next/head";
+
+import GhostContentAPI, { PostOrPage } from "@tryghost/content-api";
 import { PostHeader } from "../../components/index";
-import { Post } from "../../common/types";
+
 import { getPosts, getPost, capitalize } from "../../utils/helpers";
-import parse from "html-react-parser";
 import options from "../../utils/htmlParser";
+import parse from "html-react-parser";
+
 import styles from "../../styles/BlogPost.module.css";
 
 interface Props {
-	post: Post;
+	post: PostOrPage;
 }
 
 export default function BlogPost({ post }: Props): JSX.Element {
@@ -51,15 +54,30 @@ export default function BlogPost({ post }: Props): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const post: Post = await getPost(params.slug);
+	const slugFormat = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+	const api = new GhostContentAPI({
+		url: process.env.GHOST_HOST,
+		key: process.env.GHOST_API_KEY,
+		version: "v3"
+	});
 
-	return {
-		props: { post }
-	};
+	if (typeof params.slug === "string" && slugFormat.test(params.slug)) {
+		const post = await getPost(params.slug, api);
+
+		return {
+			props: { post }
+		};
+	}
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const posts: Post[] = await getPosts();
+	const api = new GhostContentAPI({
+		url: process.env.GHOST_HOST,
+		key: process.env.GHOST_API_KEY,
+		version: "v3"
+	});
+
+	const posts = await getPosts(api);
 	const paths = posts.map(post => ({
 		params: { slug: post.slug }
 	}));

@@ -4,6 +4,7 @@
 
 import { ReactNode, useEffect, useRef, MouseEvent } from "react";
 import highlight from "highlight.js";
+
 import styles from "./Highlight.module.css";
 
 interface Props {

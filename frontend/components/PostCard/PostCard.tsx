@@ -1,10 +1,12 @@
-import { Post } from "../../common/types";
 import Link from "next/link";
+
+import { PostOrPage } from "@tryghost/content-api";
 import { PostDetails, PostHeader } from "../index";
+
 import styles from "./PostCard.module.css";
 
 interface Props {
-	post: Post;
+	post: PostOrPage;
 }
 
 export default function PostCard({ post }: Props): JSX.Element {

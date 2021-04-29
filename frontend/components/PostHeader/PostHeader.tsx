@@ -1,11 +1,11 @@
-import { Post } from "../../common/types";
+import { PostOrPage } from "@tryghost/content-api";
 import { PostDetails } from "../index";
 
 interface Props {
 	title: string;
 	excerpt: string;
 	card?: boolean;
-	post?: Post;
+	post?: PostOrPage;
 }
 
 export default function PostHeader({

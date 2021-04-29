@@ -1,6 +1,6 @@
+import Head from "next/head";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Main, About, Portfolio } from "../components/index";
-import Head from "next/head";
 
 export default function Home(): DetailedHTMLProps<
 	HTMLAttributes<HTMLDivElement>,
