@@ -1,31 +1,58 @@
-import { Post, Tag } from "../common/types";
+import { GhostAPI, PostOrPage, PostsOrPages } from "@tryghost/content-api";
+import { TagWithPosts } from "../common/types";
+import sanitizeHtml from "sanitize-html";
 
-export async function getPosts(): Promise<Post[]> {
-	interface Posts {
-		posts: Post[];
-	}
+export async function getPosts(api: GhostAPI): Promise<PostsOrPages> {
+	const posts = await api.posts.browse({
+		include: ["tags", "authors"]
+	});
 
-	const res = await fetch(`${process.env.SERVER}/posts`);
-	const { posts }: Posts = await res.json();
+	posts.forEach(post => {
+		post.published_at = formatDate(post.published_at);
+	});
 
 	return posts;
 }
 
-export async function getPost(slug: string | string[]): Promise<Post> {
-	const res = await fetch(`${process.env.SERVER}/post/${slug}`);
-	const { post }: { post: Post } = await res.json();
+export async function getPost(
+	slug: string,
+	api: GhostAPI
+): Promise<PostOrPage> {
+	const post = await api.posts.read(
+		{
+			slug
+		},
+		{ include: ["tags", "authors"], formats: "html" }
+	);
+
+	post.published_at = formatDate(post.published_at);
+	post.html = sanitizeHtml(post.html, {
+		allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+		allowedAttributes: {
+			a: ["href", "name", "target"],
+			figure: ["class"],
+			div: ["class"],
+			img: ["src", "alt"],
+			code: ["class"]
+		}
+	});
 
 	return post;
 }
 
-export async function getTags(): Promise<Tag[]> {
-	interface Tags {
-		tags: Tag[];
-	}
+export async function getTags(api: GhostAPI): Promise<TagWithPosts[]> {
+	const tags: TagWithPosts[] = await api.tags.browse();
+	const posts = await api.posts.browse({ include: "tags" });
 
-	const res = await fetch(`${process.env.SERVER}/tags`);
-	const { tags }: Tags = await res.json();
-
+	tags.forEach(tag => {
+		tag.posts = posts.filter(post => {
+			for (const postTag of post.tags) {
+				if (postTag.id === tag.id) {
+					return true;
+				}
+			}
+		});
+	});
 	return tags;
 }
 
@@ -36,6 +63,14 @@ export function capitalize(toCapitalize: string): string {
 	);
 
 	return capitalizedArray.join(" ");
+}
+
+function formatDate(publishDate: string): string {
+	return new Date(publishDate).toLocaleDateString("en-GB", {
+		year: "numeric",
+		month: "long",
+		day: "numeric"
+	});
 }
 
 export const debounce = (fn: (...params: never[]) => void): (() => void) => {

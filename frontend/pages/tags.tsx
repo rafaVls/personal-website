@@ -1,14 +1,17 @@
 import { GetStaticProps } from "next";
+import { Fragment } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import { Fragment } from "react";
-import { Tag } from "../common/types";
-import { getTags } from "../utils/helpers";
+
+import GhostContentAPI from "@tryghost/content-api";
 import { BlogHeader } from "../components/index";
+import { TagWithPosts } from "../common/types";
+import { getTags } from "../utils/helpers";
+
 import styles from "../styles/Tags.module.css";
 
 interface Props {
-	tags: Tag[];
+	tags: TagWithPosts[];
 }
 
 export default function Tags({ tags }: Props): JSX.Element {
@@ -45,7 +48,13 @@ export default function Tags({ tags }: Props): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const tags: Tag[] = await getTags();
+	const api = new GhostContentAPI({
+		url: process.env.GHOST_HOST,
+		key: process.env.GHOST_API_KEY,
+		version: "v3"
+	});
+
+	const tags: TagWithPosts[] = await getTags(api);
 
 	return {
 		props: { tags }

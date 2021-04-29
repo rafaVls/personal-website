@@ -1,13 +1,15 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import Head from "next/head";
-import { Post } from "../common/types";
-import { getPosts } from "../utils/helpers";
+
+import GhostContentAPI, { PostOrPage } from "@tryghost/content-api";
 import { PostCard, BlogHeader } from "../components/index";
+import { getPosts } from "../utils/helpers";
+
 import styles from "../styles/Blog.module.css";
 
 interface Props {
-	posts: Post[];
+	posts: PostOrPage[];
 }
 
 export default function Blog({ posts }: Props): JSX.Element {
@@ -39,7 +41,13 @@ export default function Blog({ posts }: Props): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const posts: Post[] = await getPosts();
+	const api = new GhostContentAPI({
+		url: process.env.GHOST_HOST,
+		key: process.env.GHOST_API_KEY,
+		version: "v3"
+	});
+
+	const posts = await getPosts(api);
 
 	return {
 		props: { posts }
