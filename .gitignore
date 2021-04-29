@@ -1,8 +1,8 @@
 # dependencies
-node_modules/
+node_modules
 
 # next.js
-.next/
+.next
 
 # production
 build/
@@ -10,7 +10,7 @@ dist/
 
 # misc
 .DS_Store
-.vscode/
+.vscode
 .eslintcache
 
 # debug
