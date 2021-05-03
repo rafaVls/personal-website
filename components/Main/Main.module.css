@@ -13,45 +13,21 @@
     color: var(--text-primary);
 }
 
-.main p {
+.main p, .typewriter {
     font-family: var(--font-primary);
     line-height: 1.5;
 }
 
-.normalText {
+.normalText, .typewriter {
     font-size: clamp(1.25rem, 1.5vw, 3rem);
+}
+
+.normalText[id] {
+    display: inline;
 }
 
 .main > section > div {
     width: fit-content;
-}
-
-.main > section > div > p::after {
-    display: inline-block;
-    content: attr(data-after);
-}
-
-.typewriter {
-    overflow: hidden;
-    border-right: .15em solid var(--text-primary);
-    padding-right: .25em;
-    white-space: nowrap;
-
-    animation: 
-        typing 4.25s steps(40, end) infinite,
-        blinkCaret 1s step-end infinite;
-}
-
-@keyframes typing {
-    0% { width: 6ch; }
-    25% { width: 100%; }
-    75% {width: 100%;}
-    100% {width: 6ch;}
-}
-
-@keyframes blinkCaret {
-    from, to {border-color: transparent}
-    50% {border-color: initial;}
 }
 
 .bigText {
@@ -80,6 +56,7 @@
 @media only screen and (max-width: 768px) {
     .main {
         padding: 0 1em;
+        margin: 0;
         min-height: calc(100vh - 11rem);
 
         grid-template-columns: 100% 0;
