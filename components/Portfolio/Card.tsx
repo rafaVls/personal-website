@@ -5,7 +5,7 @@ type Props = {
 	title: string;
 	description: string;
 	stack: string[];
-	link: string;
+	link?: string;
 	github: string;
 };
 
@@ -31,13 +31,15 @@ export default function Card({
 					index !== stack.length - 1 ? `${item}, ` : item
 				)}
 			</p>
-			<div>
+			<div data-has-link={link ? "true" : null}>
 				<a href={github} target="_blank" rel="noreferrer">
 					<img src="/images/github.svg" alt="Github" title="Github repo" />
 				</a>
-				<a href={link}>
-					<img src="/images/link.svg" alt="Website" title="Website" />
-				</a>
+				{link && (
+					<a href={link}>
+						<img src="/images/link.svg" alt="Website" title="Website" />
+					</a>
+				)}
 			</div>
 		</div>
 	);

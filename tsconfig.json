@@ -1,11 +1,82 @@
 {
   "compilerOptions": {
+    "target": "ES2017",
+    "lib": [
+      "ES6",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "esModuleInterop": true,
-    "target": "ES6",
-    "noImplicitAny": true,
+    "module": "ESNext",
     "moduleResolution": "Node",
-    "outDir": "dist"
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "./components/*"
+      ],
+      "@api/*": [
+        "./api/*"
+      ],
+      "@models/*": [
+        "./models/*"
+      ],
+      "@screens/*": [
+        "./screens/*"
+      ],
+      "@hooks/*": [
+        "./hooks/*"
+      ],
+      "@services/*": [
+        "./services/*"
+      ],
+      "@constants": [
+        "./constants.ts"
+      ],
+      "@context/*": [
+        "./context/*"
+      ],
+      "@queries/*": [
+        "./queries/*"
+      ],
+      "@data/*": [
+        "./data/*"
+      ],
+      "@typeDefs/*": [
+        "./common/*"
+      ],
+      "@generated/*": [
+        "./generated/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@app/*": [
+        "./app/*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ]
+    }
   },
-  "include": ["*.ts", "*/*.ts"],
-  "exclude": ["frontend/", "node_modules/"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
