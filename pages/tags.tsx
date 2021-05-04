@@ -57,6 +57,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const tags: TagWithPosts[] = await getTags(api);
 
 	return {
-		props: { tags }
+		props: { tags },
+		revalidate: 1
 	};
 };

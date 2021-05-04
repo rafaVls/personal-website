@@ -50,6 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const posts = await getPosts(api);
 
 	return {
-		props: { posts }
+		props: { posts },
+		revalidate: 1
 	};
 };
