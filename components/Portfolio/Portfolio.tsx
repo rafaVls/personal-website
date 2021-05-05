@@ -1,5 +1,6 @@
 import Card from "./Card";
 import Projects, { Project } from "./Projects";
+
 import styles from "./Portfolio.module.css";
 
 export default function Portfolio(): JSX.Element {
@@ -17,7 +18,7 @@ export default function Portfolio(): JSX.Element {
 
 	return (
 		<section className={styles.container} id="portfolio">
-			<h5>Portfolio</h5>
+			<h2>Portfolio</h2>
 			<div className={styles.cardGrid}>{cards}</div>
 		</section>
 	);
