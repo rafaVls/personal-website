@@ -71,7 +71,6 @@ export default function ContactForm(): JSX.Element {
 					value={subject}
 					pattern="[A-Za-z0-9]+$"
 					onChange={e => setSubject(e.target.value)}
-					required
 				/>
 
 				<label htmlFor="message">Message</label>
