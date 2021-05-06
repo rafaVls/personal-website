@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import sanitizeHtml from "sanitize-html";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 
@@ -13,7 +14,11 @@ export default function contactHandler(
 ) {
 	if (req.method === "POST") {
 		try {
-			const { name, email, subject, message } = req.body;
+			const { name = "", email = "", subject = "", message = "" } = req.body;
+			const sanitizedName = sanitizeHtml(name.toString());
+			const sanitizedEmail = sanitizeHtml(email.toString());
+			const sanitizedSubject = sanitizeHtml(subject.toString());
+			const sanitizedMessage = sanitizeHtml(message.toString());
 
 			const transporter: Mail = nodemailer.createTransport({
 				port: 465,
@@ -28,8 +33,8 @@ export default function contactHandler(
 			const mailData: Mail.Options = {
 				from: process.env.BURNER_EMAIL,
 				to: process.env.EMAIL,
-				subject: `Message from ${name} - ${subject}`,
-				text: `${message}\n\n ${name} - ${email}`
+				subject: `Message from ${sanitizedName} - ${sanitizedSubject}`,
+				text: `${sanitizedMessage}\n\n ${sanitizedName} - ${sanitizedEmail}`
 			};
 			transporter.sendMail(mailData, function (err, info) {
 				if (err) {
