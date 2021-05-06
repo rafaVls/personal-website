@@ -30,17 +30,18 @@
 
 .container > form > input,
 .container > form > textarea {
-	margin-bottom: 1.5rem;
 	padding: 0.5rem;
 	min-height: 3rem;
 
 	font-family: var(--font-primary);
 	font-size: clamp(1.2rem, 1.25vw, 3rem);
-	border-radius: 10px;
+}
+
+.container > form > label:not(:first-of-type) {
+	margin-top: 1.5rem;
 }
 
 .container > form > textarea {
-	margin-bottom: 3rem;
 	max-width: 100%;
 }
 
@@ -48,9 +49,15 @@
 	vertical-align: text-top;
 }
 
+.container > form > div {
+	color: var(--text-accent);
+	font-size: clamp(0.9rem, 1vw, 2rem);
+}
+
 .container > form > button {
+	margin-top: 3rem;
 	padding: 0.5em;
-	width: 40%;
+	width: 50%;
 	max-width: 350px;
 
 	background-color: var(--bg-color);
@@ -66,10 +73,12 @@
 
 @media only screen and (min-width: 768px) {
 	.container > form {
-		padding: 0 16rem;
+		padding: 0 10rem;
+		max-width: 90ch;
+		margin: 0 auto;
 	}
 
-	.container > form > input {
-		margin-bottom: 2rem;
+	.container > form > label:not(:first-of-type) {
+		margin-top: 2rem;
 	}
 }
