@@ -1,91 +1,106 @@
-import { FormEvent, useState } from "react";
+import { Formik, Form, FormikState } from "formik";
+import * as Yup from "yup";
+import TextInput from "./TextInput";
 
 import styles from "./ContactForm.module.css";
 
+interface Values {
+	name: string;
+	email: string;
+	subject: string;
+	message: string;
+}
+
 export default function ContactForm(): JSX.Element {
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const [subject, setSubject] = useState("");
-	const [message, setMessage] = useState("");
-
-	async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-
-		let data = {
-			name,
-			email,
-			subject,
-			message
-		};
-
+	async function handleSubmit(
+		values: Values,
+		setSubmitting: (isSubmitting: boolean) => void,
+		resetForm: (nextState?: Partial<FormikState<Values>>) => void
+	) {
 		const res = await fetch("/api/contact", {
 			method: "POST",
 			headers: {
 				Accept: "application/json, text/plain",
 				"Content-Type": "application/json"
 			},
-			body: JSON.stringify(data)
+			body: JSON.stringify(values)
 		});
 
 		if (res.status === 200) {
-			setName("");
-			setEmail("");
-			setSubject("");
-			setMessage("");
+			setSubmitting(false);
+			resetForm();
 		}
 	}
 
 	return (
 		<section className={styles.container}>
 			<h2>Contact Me</h2>
+			<Formik
+				initialValues={{
+					name: "",
+					email: "",
+					subject: "",
+					message: ""
+				}}
+				validationSchema={Yup.object({
+					name: Yup.string()
+						.min(2, "Name field must contain at least 2 letters.")
+						.max(25, "Name field can't contain more than 25 characters.")
+						.matches(/^[a-zA-z\s]*$/, "No numbers or symbols, please."),
+					email: Yup.string().email("Invalid email address."),
+					subject: Yup.string().max(
+						30,
+						"Subject field can't contain more than 30 characters."
+					),
+					message: Yup.string().required("Required field.")
+				})}
+				onSubmit={(values, { setSubmitting, resetForm }) =>
+					handleSubmit(values, setSubmitting, resetForm)
+				}
+			>
+				{props => (
+					<>
+						<Form>
+							<TextInput
+								label="Name"
+								type="text"
+								name="name"
+								id="name"
+								placeholder="Jane Doe"
+							/>
 
-			<form onSubmit={e => handleSubmit(e)}>
-				<label htmlFor="name">Name</label>
-				<input
-					type="text"
-					name="name"
-					id="name"
-					placeholder="Jane Doe"
-					value={name}
-					pattern="[A-Za-z]+"
-					onChange={e => setName(e.target.value)}
-				/>
+							<TextInput
+								label="Email"
+								type="email"
+								name="email"
+								id="email"
+								placeholder="example@email.com"
+							/>
 
-				<label htmlFor="email">Email</label>
-				<input
-					type="email"
-					name="email"
-					id="email"
-					placeholder="example@email.com"
-					title="This is so I can reply to you. I do not store or sell your information anywhere."
-					value={email}
-					onChange={e => setEmail(e.target.value)}
-				/>
+							<TextInput
+								label="Subject"
+								type="text"
+								name="subject"
+								id="subject"
+								placeholder="Let's talk about..."
+							/>
 
-				<label htmlFor="subject">Subject</label>
-				<input
-					type="text"
-					name="subject"
-					id="subject"
-					placeholder="Let's talk about..."
-					value={subject}
-					pattern="[A-Za-z0-9]+$"
-					onChange={e => setSubject(e.target.value)}
-				/>
+							<TextInput
+								label="Message"
+								name="message"
+								id="message"
+								placeholder="Hi Rafael! I'd like to talk to you about..."
+								rows={4}
+								textarea
+							/>
 
-				<label htmlFor="message">Message</label>
-				<textarea
-					name="message"
-					id="message"
-					placeholder="Hi Rafael! Just wanted to talk to you about..."
-					value={message}
-					rows={4}
-					onChange={e => setMessage(e.target.value)}
-					required
-				/>
-
-				<button>Send email</button>
-			</form>
+							<button type="submit">
+								{props.isSubmitting ? "Sending..." : "Send message"}
+							</button>
+						</Form>
+					</>
+				)}
+			</Formik>
 		</section>
 	);
 }
