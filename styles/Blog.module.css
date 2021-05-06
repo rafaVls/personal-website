@@ -1,22 +1,22 @@
 .browseTags {
-    padding: .5em 1em;
+	padding: 0.5em 1em;
 
-    cursor: pointer;
+	/* cursor: pointer; */
 
-    border: 2px solid var(--text-accent);
-    color: var(--text-accent);
-    border-radius: 50px;
-    outline-offset: 10px;
+	border: 2px solid var(--text-accent);
+	color: var(--text-accent);
+	border-radius: 50px;
+	outline-offset: 10px;
 
-    font-family: var(--font-primary);
-    font-size: clamp(1.2rem, 1.5vw, 3rem);
+	font-family: var(--font-primary);
+	font-size: clamp(1.2rem, 1.5vw, 3rem);
 }
 
 .postCards {
-    margin: 4em 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-    gap: 3em;
+	margin: 4em 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+	gap: 3em;
 }
 
 /* 
@@ -26,68 +26,68 @@ but it'd make the grid less responsive. I think it's fine,
 it's just a small margin of error and it doesn't look terrible.
  */
 .postCards > li {
-    border-bottom: 1px solid gray;
+	border-bottom: 1px solid gray;
 }
 
 @media only screen and (min-width: 768px) {
-    .postCards {
-        grid-template-columns: repeat(6, 1fr);
-    }
+	.postCards {
+		grid-template-columns: repeat(6, 1fr);
+	}
 
-    .postCards > li {
-        grid-column:  auto / span 2;
-        border: 0;
-    }
-    
-    .postCards li:nth-child(6n - 5) {
-        position: relative;
-        grid-column: 1 / 7;
-        display: flex;
-    }
+	.postCards > li {
+		grid-column: auto / span 2;
+		border: 0;
+	}
 
-    .postCards li:nth-child(6n - 5)::after {
-        content: "";
-        position: absolute;
-        top: calc(100% + 1.5em);
-        width: 100%;
-        height: 1px;
-        background-color: gray;
-    }
-    
-    .postCards li:nth-child(6n - 5) > img {
-        width: 60%;
-        max-height: 350px;
-        object-fit: cover;
-    }
+	.postCards li:nth-child(6n - 5) {
+		position: relative;
+		grid-column: 1 / 7;
+		display: flex;
+	}
 
-    .postCards li:nth-child(6n - 5) > div {
-        padding-left: 2em;
-    }
-    
-    .postCards li:nth-child(6n - 1) {
-        position: relative;
-        grid-column: 1 / 4;
-    }
+	.postCards li:nth-child(6n - 5)::after {
+		content: "";
+		position: absolute;
+		top: calc(100% + 1.5em);
+		width: 100%;
+		height: 1px;
+		background-color: gray;
+	}
 
-    .postCards li:nth-child(6n - 1)::before, 
-    .postCards li:nth-child(6n - 1)::after {
-        content: "";
-        position: absolute;
-        display: block;
-        width: calc(200% + 3em);
-        height: 1px;
-        background-color: gray;
-    }
+	.postCards li:nth-child(6n - 5) > img {
+		width: 60%;
+		max-height: 350px;
+		object-fit: cover;
+	}
 
-    .postCards li:nth-child(6n - 1)::before {
-        bottom: calc(100% + 1.5em);
-    }
-    
-    .postCards li:nth-child(6n - 1)::after {
-        top: calc(100% + 1.5em);
-    }
+	.postCards li:nth-child(6n - 5) > div {
+		padding-left: 2em;
+	}
 
-    .postCards li:nth-child(6n - 1) + li {
-        grid-column: 4 / 7;
-    }
+	.postCards li:nth-child(6n - 1) {
+		position: relative;
+		grid-column: 1 / 4;
+	}
+
+	.postCards li:nth-child(6n - 1)::before,
+	.postCards li:nth-child(6n - 1)::after {
+		content: "";
+		position: absolute;
+		display: block;
+		width: calc(200% + 3em);
+		height: 1px;
+		background-color: gray;
+	}
+
+	.postCards li:nth-child(6n - 1)::before {
+		bottom: calc(100% + 1.5em);
+	}
+
+	.postCards li:nth-child(6n - 1)::after {
+		top: calc(100% + 1.5em);
+	}
+
+	.postCards li:nth-child(6n - 1) + li {
+		grid-column: 4 / 7;
+	}
 }

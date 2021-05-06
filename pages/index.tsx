@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Main, About, Portfolio } from "../components/index";
+import { Main, About, Portfolio, ContactForm } from "../components/index";
 
 export default function Home(): DetailedHTMLProps<
 	HTMLAttributes<HTMLDivElement>,
@@ -36,6 +36,7 @@ export default function Home(): DetailedHTMLProps<
 			<Main />
 			<About />
 			<Portfolio />
+			<ContactForm />
 		</>
 	);
 }

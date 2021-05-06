@@ -54,14 +54,16 @@ a:hover {
 	opacity: 0.7;
 }
 
-a:focus {
-	outline: 2px solid;
+a:focus,
+input:focus,
+textarea:focus {
+	outline: 2px solid var(--text-primary);
 	outline-offset: 3px;
 }
 
 button:focus {
 	outline: none;
-	box-shadow: 0 0 0 2px, 0 0 0 3px var(--text-accent);
+	box-shadow: 0 0 0 4px var(--bg-color), 0 0 0 7px var(--text-accent);
 }
 
 ::-moz-focus-inner {

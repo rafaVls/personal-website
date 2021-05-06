@@ -1,69 +1,67 @@
 .container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5em;
-    min-height: 3em;
-    z-index: 10;
-    
-    padding: 0 3em;
-    background-color: var(--footer-header-bg-color);
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5em;
+	min-height: 3em;
+	/* z-index: 10; */
 
-    transition: 
-        box-shadow 300ms ease-out,
-        height 300ms ease-out;
+	padding: 0 3em;
+	background-color: var(--footer-header-bg-color);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	transition: box-shadow 300ms ease-out, height 300ms ease-out;
 }
 
 html:not([data-scroll="0"]) .container {
-    height: 3em;
-    box-shadow: 0 5px 15px black;
+	height: 3em;
+	box-shadow: 0 5px 15px black;
 }
 
 .container h1 {
-    font-family: var(--font-accent);
-    font-size: clamp(1.75rem, 2vw, 5rem);
-    font-weight: 500;
-    color: var(--text-accent);
+	font-family: var(--font-accent);
+	font-size: clamp(1.75rem, 2vw, 5rem);
+	font-weight: 500;
+	color: var(--text-accent);
 }
 
 .navBar {
-    min-width: 60%;
+	min-width: 60%;
 }
 
 .navList {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .navList li a {
-    font-family: var(--font-accent);
-    font-size: clamp(1.25rem, 1.5vw, 3rem);
-    color: white;
+	font-family: var(--font-accent);
+	font-size: clamp(1.25rem, 1.5vw, 3rem);
+	color: white;
 }
 
 @media only screen and (max-width: 700px) {
-    .container {
-        flex-direction: column;
-        justify-content: space-evenly;
-        height: 6em;
-    }
-    
-    html:not([data-scroll="0"]) .container > h1 {
-        display: none;
-    }
+	.container {
+		flex-direction: column;
+		justify-content: space-evenly;
+		height: 6em;
+	}
 
-    .navBar {
-        width: 100%;
-    }
+	html:not([data-scroll="0"]) .container > h1 {
+		display: none;
+	}
+
+	.navBar {
+		width: 100%;
+	}
 }
 
 @media only screen and (max-width: 320px) {
-    .navList {
-        justify-content: space-between;
-    }
+	.navList {
+		justify-content: space-between;
+	}
 }
