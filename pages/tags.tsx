@@ -15,6 +15,7 @@ interface Props {
 }
 
 export default function Tags({ tags }: Props): JSX.Element {
+	const title = "Tags | Decrypting the Web - A Blog by Rafael Avilés";
 	const tagsContent = tags.map((tag, i) => (
 		<Fragment key={i}>
 			<h3 id={tag.slug}>{tag.name}</h3>
@@ -37,7 +38,8 @@ export default function Tags({ tags }: Props): JSX.Element {
 					name="description"
 					content="A blog where you can read about HTML, CSS, JavaScript, React, Nodejs, and anything related to Web Development and Software Development in general."
 				/>
-				<title>Tags | Technical Blog - A Blog by Rafael Avilés</title>
+				<meta name="robots" content="none" />
+				<title>{title}</title>
 			</Head>
 			<main>
 				<BlogHeader />

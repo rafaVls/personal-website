@@ -1,5 +1,6 @@
 import { PostOrPage } from "@tryghost/content-api";
 import { PostDetails } from "../index";
+import { formatDate } from "../../utils/helpers";
 
 interface Props {
 	title: string;
@@ -40,7 +41,7 @@ export default function PostHeader({
 					<div>
 						<strong>{primary_author.name}</strong>
 						<PostDetails
-							published_at={post.published_at}
+							published_at={formatDate(post.published_at)}
 							reading_time={post.reading_time}
 						/>
 					</div>

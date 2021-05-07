@@ -25,7 +25,7 @@ export async function getPost(
 		{ include: ["tags", "authors"], formats: "html" }
 	);
 
-	post.published_at = formatDate(post.published_at);
+	// post.published_at = formatDate(post.published_at);
 	post.html = sanitizeHtml(post.html, {
 		allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
 		allowedAttributes: {
@@ -65,7 +65,7 @@ export function capitalize(toCapitalize: string): string {
 	return capitalizedArray.join(" ");
 }
 
-function formatDate(publishDate: string): string {
+export function formatDate(publishDate: string): string {
 	return new Date(publishDate).toLocaleDateString("en-GB", {
 		year: "numeric",
 		month: "long",

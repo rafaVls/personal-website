@@ -13,6 +13,9 @@ interface Props {
 }
 
 export default function Blog({ posts }: Props): JSX.Element {
+	const title = "Decrypting the Web - A Blog by Rafael Avilés";
+	const description =
+		"A blog where you can read about HTML, CSS, JavaScript, React, Nodejs, and anything related to Web Development and Software Development in general.";
 	const postCards = posts.map((post, index) => (
 		<li key={index}>
 			<PostCard post={post} />
@@ -22,11 +25,21 @@ export default function Blog({ posts }: Props): JSX.Element {
 	return (
 		<>
 			<Head>
+				<meta name="description" content={description} />
+				<meta name="googlebot" content="index, follow" />
+				<meta name="Twitterbot" content="index, follow" />
+				<meta name="og:title" property="og:title" content={title} />
 				<meta
-					name="description"
-					content="A blog where you can read about HTML, CSS, JavaScript, React, Nodejs, and anything related to Web Development and Software Development in general."
+					name="og:description"
+					property="og:description"
+					content={description}
 				/>
-				<title>Technical Blog - A Blog by Rafael Avilés</title>
+				<meta
+					name="og:image"
+					property="og:image"
+					content="/images/projects/homepage.png"
+				/>
+				<title>{title}</title>
 			</Head>
 			<main>
 				<BlogHeader />
