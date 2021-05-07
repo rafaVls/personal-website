@@ -16,22 +16,52 @@ interface Props {
 }
 
 export default function BlogPost({ post }: Props): JSX.Element {
+	const title = `${capitalize(post.title)} | Decrypting the Web`;
 	const postContent = parse(post.html, options);
+
 	const tags = post.tags.map((tag, index) => (
 		<Link href={`/tags#${tag.slug}`} key={index}>
 			<a>#{tag.name}</a>
 		</Link>
+	));
+	const OGTags = post.tags.map((tag, index) => (
+		<meta
+			key={index}
+			name="og:article:tag"
+			property="og:article:tag"
+			content={tag.name}
+		/>
 	));
 
 	return (
 		<>
 			<Head>
 				<meta name="description" content={post.excerpt} />
-				<title>{capitalize(post.title)} | A Blog by Rafael Avilés</title>
+				<meta name="googlebot" content="index, follow" />
+				<meta name="Twitterbot" content="index, follow" />
+				<meta name="og:title" property="og:title" content={title} />
+				<meta
+					name="og:description"
+					property="og:description"
+					content={post.excerpt}
+				/>
+				<meta
+					name="og:image"
+					property="og:image"
+					content={post.feature_image}
+				/>
+				<meta name="og:type" property="og:type" content="article" />
+				<meta
+					name="og:article:published_time"
+					property="og:article:published_time"
+					content={post.published_at.split("T")[0]}
+				/>
+				{OGTags}
 				<link
 					rel="stylesheet"
 					href="https://highlightjs.org/static/demo/styles/a11y-dark.css"
 				/>
+				<title>{title}</title>
 			</Head>
 			<main>
 				<article className={styles.article}>

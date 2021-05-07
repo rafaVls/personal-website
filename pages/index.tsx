@@ -6,12 +6,25 @@ export default function Home(): DetailedHTMLProps<
 	HTMLAttributes<HTMLDivElement>,
 	HTMLDivElement
 > {
+	const title = "Rafael Avilés | Web Developer";
+	const description =
+		"This is a personal website where you can see my skills, my portfolio containing my projects, and my education.";
+
 	return (
 		<>
 			<Head>
+				<meta name="description" content={description} />
+				<meta name="robots" content="none" />
+				<meta name="og:title" property="og:title" content={title} />
 				<meta
-					name="description"
-					content="Landing page where you can see my skills, my portfolio containing my projects, and my education."
+					name="og:image"
+					property="og:image"
+					content="/images/projects/homepage.png"
+				/>
+				<meta
+					name="og:description"
+					property="og:description"
+					content={description}
 				/>
 				<link
 					rel="apple-touch-icon"
@@ -31,7 +44,7 @@ export default function Home(): DetailedHTMLProps<
 					href="/favicon-16x16.png"
 				/>
 				<link rel="manifest" href="/site.webmanifest" />
-				<title>Rafael Avilés | Web Developer</title>
+				<title>{title}</title>
 			</Head>
 			<Main />
 			<About />
