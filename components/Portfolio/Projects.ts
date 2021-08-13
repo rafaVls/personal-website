@@ -32,7 +32,7 @@ const Projects: Project[] = [
 		description:
 			"This app is a solution to the Frontend Mentor calculator challenge. Some of the math functionailty is still a work in progress.",
 		stack: ["HTML", "CSS", "Javascript"],
-		link: "https://gifted-shaw-56597d.netlify.app/",
+		link: "https://frontend-calculator.herokuapp.com/",
 		repo: "https://github.com/rafaVls/calculator-app"
 	}
 ];
