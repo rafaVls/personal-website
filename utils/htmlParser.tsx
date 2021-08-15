@@ -12,14 +12,23 @@ function replace(domNode: Element): false | void | JSX.Element {
 		const { tagName, attribs, children } = domNode;
 
 		// Because the header tag already has an h1,
-		// replace any h1 tags to h2, and any h2 tags to h3
-		if (/h[1-2]/.test(tagName)) {
+		// replace any h1 tags to h2, h2 to h3 and so on
+		if (/h[1-5]/.test(tagName)) {
 			switch (tagName) {
 				case "h1":
 					return <h2>{domToReact(children, options)}</h2>;
 
 				case "h2":
 					return <h3>{domToReact(children, options)}</h3>;
+
+				case "h3":
+					return <h4>{domToReact(children, options)}</h4>;
+
+				case "h4":
+					return <h5>{domToReact(children, options)}</h5>;
+
+				case "h5":
+					return <h6>{domToReact(children, options)}</h6>;
 
 				default:
 					break;
