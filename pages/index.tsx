@@ -14,7 +14,6 @@ export default function Home(): DetailedHTMLProps<
 		<>
 			<Head>
 				<meta name="description" content={description} />
-				<meta name="robots" content="none" />
 				<meta name="og:title" property="og:title" content={title} />
 				<meta
 					name="og:image"
