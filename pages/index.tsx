@@ -15,6 +15,7 @@ export default function Home(): DetailedHTMLProps<
 			<Head>
 				<meta name="description" content={description} />
 				<meta name="og:title" property="og:title" content={title} />
+				<meta name="google-site-verification" content="PS0KpjPDRregeC1qRsWLwMgSC7WZc499VNzRfTzFEIw" />
 				<meta
 					name="og:image"
 					property="og:image"
