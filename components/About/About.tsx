@@ -60,7 +60,7 @@ export default function About(): JSX.Element {
 						I am a Web Developer who specializes in building high quality
 						responsive websites that are accessible to as many people as
 						possible. I am comfortable working with C#, Python, HTML/CSS,
-						JavaScript and several of it&apos;s frameworks.
+						JavaScript and several of its frameworks.
 					</p>
 				</section>
 				<section className={styles.skillsAndEducation}>
