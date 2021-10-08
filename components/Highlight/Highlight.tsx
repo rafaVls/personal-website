@@ -2,7 +2,7 @@
 //* It's made based on the node package react-highlight.js:
 //? https://github.com/bvaughn/react-highlight.js
 
-import { ReactNode, useEffect, useRef, MouseEvent } from "react";
+import { ReactNode, useEffect, useRef, MouseEvent, DOMElement } from "react";
 import highlight from "highlight.js";
 
 import styles from "./Highlight.module.css";
@@ -35,6 +35,15 @@ export default function Highlight({ children, language }: Props): JSX.Element {
 			selection.removeAllRanges();
 			selection.addRange(range);
 			document.execCommand("copy");
+
+			const _ = e.target as HTMLButtonElement;
+			_.textContent = "Copied ✓";
+			_.style.color = "hsl(160, 84%, 39.5%)";
+
+			setTimeout(() => {
+				_.textContent = "Copy 📋";
+				_.style.color = "hsl(160, 100%, 75%)";
+			}, 2500);
 		} else {
 			console.warn("Could not select text: Unsopported browser.");
 		}
@@ -43,7 +52,7 @@ export default function Highlight({ children, language }: Props): JSX.Element {
 	return (
 		<>
 			<button className={styles.copyButton} onClick={e => clickHandler(e)}>
-				Copy
+				Copy 📋
 			</button>
 			<code className={language} ref={codeElement}>
 				{children}

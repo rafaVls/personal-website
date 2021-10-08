@@ -149,7 +149,9 @@
 }
 
 .article > section > pre {
+    position: relative;
     padding: 1em;
+
     font-size: var(--code-font-size);
     color: beige;
     background-color: var(--code-bg-color);
