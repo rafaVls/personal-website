@@ -150,7 +150,7 @@
 
 .article > section > pre {
     position: relative;
-    padding: 1em;
+    padding: 2em 1em 1em;
 
     font-size: var(--code-font-size);
     color: beige;
