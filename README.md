@@ -6,6 +6,9 @@ This is a portfolio website made using [Next.js](https://nextjs.org/), a static 
 - A landing page displaying a bit about me, my skills, education, portfolio and a contact form.
 - Blogposts pulled from Ghost CMS with technical content about web development.
 
+## Screenshots
+![Landing page of my personal website](./public/images/projects/homepage.png)
+
 ## Tech Stack
 - Next.js
 - Ghost CMS
