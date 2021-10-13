@@ -21,7 +21,7 @@
     display: flex;
     justify-content: space-between;
 
-    width: max(12em, 10vw);
+    width: max(20em, 10vw);
 }
 
 

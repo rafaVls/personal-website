@@ -18,6 +18,11 @@ export default function Footer(): JSX.Element {
 						Github
 					</a>
 				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/rafael-avil%C3%A9s/" target="_blank" rel="noreferrer">
+						LinkedIn
+					</a>
+				</li>
 			</ul>
 			<p>Made by Rafael Avilés Fierro - rafa.vfierro@outlook.com</p>
 		</footer>
