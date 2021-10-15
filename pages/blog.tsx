@@ -25,21 +25,21 @@ export default function Blog({ posts }: Props): JSX.Element {
 	return (
 		<>
 			<Head>
+				<title>{title}</title>
 				<meta name="description" content={description} />
-				<meta name="googlebot" content="index, follow" />
-				<meta name="Twitterbot" content="index, follow" />
-				<meta name="og:title" property="og:title" content={title} />
+
+				<meta property="og:type" content="website" />
+				<meta property="og:title" content={title} />
+				<meta property="og:description" content={description} />
+				<meta property="og:image" content="/images/projects/homepage.png" />
+
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content={title} />
+				<meta name="twitter:description" content={description} />
 				<meta
-					name="og:description"
-					property="og:description"
-					content={description}
-				/>
-				<meta
-					name="og:image"
-					property="og:image"
+					name="twitter:image:src"
 					content="/images/projects/homepage.png"
 				/>
-				<title>{title}</title>
 			</Head>
 			<main>
 				<BlogHeader />

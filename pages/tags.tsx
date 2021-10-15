@@ -34,12 +34,12 @@ export default function Tags({ tags }: Props): JSX.Element {
 	return (
 		<>
 			<Head>
+				<title>{title}</title>
 				<meta
 					name="description"
 					content="A blog where you can read about HTML, CSS, JavaScript, React, Nodejs, and anything related to Web Development and Software Development in general."
 				/>
-				<meta name="robots" content="none" />
-				<title>{title}</title>
+				<meta name="robots" content="noindex, follow" />
 			</Head>
 			<main>
 				<BlogHeader />

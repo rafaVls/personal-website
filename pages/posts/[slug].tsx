@@ -25,43 +25,35 @@ export default function BlogPost({ post }: Props): JSX.Element {
 		</Link>
 	));
 	const OGTags = post.tags.map((tag, index) => (
-		<meta
-			key={index}
-			name="og:article:tag"
-			property="og:article:tag"
-			content={tag.name}
-		/>
+		<meta key={index} property="og:article:tag" content={tag.name} />
 	));
 
 	return (
 		<>
 			<Head>
+				<title>{title}</title>
 				<meta name="description" content={post.excerpt} />
-				<meta name="googlebot" content="index, follow" />
-				<meta name="Twitterbot" content="index, follow" />
-				<meta name="og:title" property="og:title" content={title} />
+				<meta name="robots" content="index, follow" />
+
+				<meta property="og:type" content="article" />
+				<meta property="og:title" content={title} />
+				<meta property="og:description" content={post.excerpt} />
+				<meta property="og:image" content={post.feature_image} />
 				<meta
-					name="og:description"
-					property="og:description"
-					content={post.excerpt}
-				/>
-				<meta
-					name="og:image"
-					property="og:image"
-					content={post.feature_image}
-				/>
-				<meta name="og:type" property="og:type" content="article" />
-				<meta
-					name="og:article:published_time"
 					property="og:article:published_time"
 					content={post.published_at.split("T")[0]}
 				/>
 				{OGTags}
+
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content={title} />
+				<meta name="twitter:description" content={post.excerpt} />
+				<meta name="twitter:image:src" content={post.feature_image} />
+
 				<link
 					rel="stylesheet"
 					href="https://highlightjs.org/static/demo/styles/a11y-dark.css"
 				/>
-				<title>{title}</title>
 			</Head>
 			<main>
 				<article className={styles.article}>
