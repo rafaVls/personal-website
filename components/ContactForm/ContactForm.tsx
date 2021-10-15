@@ -86,7 +86,7 @@ export default function ContactForm(): JSX.Element {
 							/>
 
 							<TextInput
-								label="Message"
+								label="Message*"
 								name="message"
 								id="message"
 								placeholder="Hi Rafael! I'd like to talk to you about..."
