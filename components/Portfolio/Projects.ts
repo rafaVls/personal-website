@@ -29,10 +29,10 @@ const Projects: Project[] = [
 		img: "/images/projects/weatherly.png",
 		title: "Weatherly",
 		description:
-			"A fullstack weather app made with Reactjs, Expressjs and TypeScript.",
-		stack: ["Expressjs", "React", "TypeScript"],
-		link: "",
-		repo: "https://github.com/rafaVls/Fullstack-Weatherly"
+			"A fullstack weather app made with Reactjs, Flask and TypeScript.",
+		stack: ["React", "TypeScript", "Python", "Flask", "CSS"],
+		link: "https://weatherly-sand.vercel.app",
+		repo: "https://github.com/rafaVls/Weatherly"
 	},
 	{
 		img: "/images/projects/homepage.png",
