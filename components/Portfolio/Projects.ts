@@ -12,7 +12,7 @@ const Projects: Project[] = [
 		img: "/images/projects/typefight.png",
 		title: "Typefight",
 		description:
-			"Typefight is a typing game where you get a random sentence, type it in, and see your score, as well as other people's score.",
+			"Typefight is a typing game where you get a random sentence, type it in, and compare your time with a global highscore",
 		stack: [
 			"Python",
 			"Flask",
@@ -22,8 +22,8 @@ const Projects: Project[] = [
 			"CSS",
 			"JavaScript"
 		],
-		link: "",
-		repo: "https://github.com/rafaVls/typefight"
+		link: "https://typefight.herokuapp.com/",
+		repo: "https://gitlab.com/rafaVls/typefight"
 	},
 	{
 		img: "/images/projects/weatherly.png",
