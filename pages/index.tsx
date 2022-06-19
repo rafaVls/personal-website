@@ -51,7 +51,11 @@ export default function Home(): DetailedHTMLProps<
 			<Main />
 			<About />
 			<Portfolio />
-			<ContactForm />
+			{/* 
+			gmail removed the ability to login through code,
+			and I'm not bothered to read through their API. 
+			I'm removing this for now
+			<ContactForm /> */}
 		</>
 	);
 }
